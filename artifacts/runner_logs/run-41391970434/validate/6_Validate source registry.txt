@@ -1,0 +1,12 @@
+﻿2026-11-02T05:05:27.4702122Z ##[group]Run PYTHONPATH=src python -c "from pathlib import Path; from evrp_bench.registry import load_registry, validate_registry; p=Path('data/registry/evrp_dataset_registry.json'); e=validate_registry(load_registry(p)); print('Registry validation passed' if not e else '\n'.join(e)); raise SystemExit(bool(e))"
+2026-11-02T05:05:27.4704329Z [36;1mPYTHONPATH=src python -c "from pathlib import Path; from evrp_bench.registry import load_registry, validate_registry; p=Path('data/registry/evrp_dataset_registry.json'); e=validate_registry(load_registry(p)); print('Registry validation passed' if not e else '\n'.join(e)); raise SystemExit(bool(e))"[0m
+2026-11-02T05:05:27.4736362Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:05:27.4736677Z env:
+2026-11-02T05:05:27.4736988Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.4737483Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:05:27.4737963Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.4738431Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.4738856Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.4739286Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:05:27.4739643Z ##[endgroup]
+2026-11-02T05:05:27.5015299Z Registry validation passed

@@ -2,7 +2,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-REQUIRED_DATASET_FIELDS = {"dataset_id", "name", "official_source_url", "problem_families", "key_parameters", "recommended_use_cases", "compatibility", "provenance_status", "licence_status", "related_citation_ids"}
+REQUIRED_DATASET_FIELDS = {"dataset_id", "name", "official_source_url", "problem_families", "key_parameters", "recommended_use_cases", "compatibility", "provenance_status", "licence_status", "related_citation_ids", "repository_folder", "local_status", "local_instance_count"}
 
 def load_registry(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -26,4 +26,11 @@ def validate_registry(registry: dict) -> list[str]:
                 errors.append(f"{did}: unknown related citation id {cid}")
         if not ds.get("problem_families"):
             errors.append(f"{did}: problem_families must not be empty")
+        if ds.get("local_status") not in {"locally_ingested_and_parser_validated", "catalogued_not_yet_ingested"}:
+            errors.append(f"{did}: invalid local_status")
+        if not isinstance(ds.get("local_instance_count"), int) or ds.get("local_instance_count") < 0:
+            errors.append(f"{did}: local_instance_count must be a non-negative integer")
+        folder = Path(ds.get("repository_folder", ""))
+        if not folder.parts or folder.is_absolute() or ".." in folder.parts:
+            errors.append(f"{did}: repository_folder must be a safe relative path")
     return errors

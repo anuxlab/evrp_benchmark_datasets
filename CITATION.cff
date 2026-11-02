@@ -1,5 +1,11 @@
 cff-version: 1.2.0
-message: "If you use this repository, cite the original dataset papers listed in README.md and DATASET_CATALOG.md."
-title: "EVRP Benchmark Lab"
-type: software
+message: "If you use this repository, cite the repository and the original dataset/paper for every benchmark instance used."
+title: "EVRP Benchmark Datasets"
+authors:
+  - family-names: Prasad
+    given-names: Anurag
+version: 0.3.0
+date-released: 2026-11-02
+type: dataset
+url: "https://github.com/anuxlab/evrp_benchmark_datasets"
 license: MIT

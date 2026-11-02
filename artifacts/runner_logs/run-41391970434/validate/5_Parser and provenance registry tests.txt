@@ -1,0 +1,13 @@
+﻿2026-11-02T05:05:26.9324344Z ##[group]Run PYTHONPATH=src pytest -q
+2026-11-02T05:05:26.9325014Z [36;1mPYTHONPATH=src pytest -q[0m
+2026-11-02T05:05:26.9357333Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:05:26.9357585Z env:
+2026-11-02T05:05:26.9357855Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:26.9358301Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:05:26.9358736Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:26.9359134Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:26.9359743Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:26.9360130Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:05:26.9360456Z ##[endgroup]
+2026-11-02T05:05:27.4430552Z .......                                                                  [100%]
+2026-11-02T05:05:27.4431181Z 7 passed in 0.07s

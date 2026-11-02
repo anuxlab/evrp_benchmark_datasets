@@ -1,0 +1,38 @@
+$ /opt/pyvenv/bin/python -m evrp_bench.runner --data data/raw --out /tmp/evrp-log-001 --dataset EVRP-001 --problem-variant E-CVRP --instance-mode all
+EXIT_CODE=0
+
+STDOUT:
+{
+  "files_discovered": 17,
+  "files_available_in_selected_datasets": 17,
+  "files_available_in_all_local_corpus": 109,
+  "sample_mode": false,
+  "instance_mode": "all",
+  "selected_datasets": [
+    "EVRP-001"
+  ],
+  "datasets_with_local_files": [
+    "EVRP-001"
+  ],
+  "selected_datasets_without_local_files": [],
+  "problem_variant": "E-CVRP",
+  "max_instances": 0,
+  "passed": 17,
+  "failed": 0,
+  "formats": {
+    "mavrovouniotis_evrp": 17
+  },
+  "filtered_out_by_problem_variant": 0
+}
+
+STDERR:
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 718, in _warm_feature_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 509, in _warm_drawing_and_image_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/generated/interface/models.py", line 32861, in bring_to_front
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/remote.py", line 764, in __call__
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/client.py", line 175, in call
+artifact_tool.rpc.client.RemoteError: Element ordering requires an owning element collection.

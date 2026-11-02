@@ -1,0 +1,40 @@
+{
+  "dataset_id": "EVRP-007",
+  "name": "Akbay et al. expanded two-echelon EVRP dataset",
+  "problem_families": [
+    "2E-EVRP",
+    "2E-EVRPTW",
+    "SPD",
+    "partial delivery"
+  ],
+  "official_source_url": "https://zenodo.org/records/14844216",
+  "dataset_doi": "10.5281/zenodo.14844216",
+  "version": "Version 2 (2025)",
+  "published_instance_count": 3000,
+  "key_parameters": [
+    "central depot",
+    "satellite depots",
+    "two vehicle echelons",
+    "customer coordinates and demand",
+    "time windows",
+    "EV battery and load capacities",
+    "SPD and partial delivery flags"
+  ],
+  "recommended_use_cases": "two-echelon logistics; satellites; time windows; simultaneous pickup/delivery; partial deliveries; scale tests",
+  "compatibility": {
+    "2E-EVRP": "direct_fit",
+    "2E-EVRPTW": "direct_fit",
+    "single_echelon_EVRP": "unsupported without documented projection"
+  },
+  "provenance_status": "research_published_and_officially_hosted",
+  "licence_status": "Zenodo record describes software/data release; verify archive-level licence before republishing",
+  "notes": "Zenodo v2 states 3,000 instances. It is a distinct two-echelon family, not a single-echelon EVRP corpus.",
+  "related_citation_ids": [
+    "P07",
+    "P08"
+  ],
+  "repository_folder": "data/raw/akbay-two-echelon",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

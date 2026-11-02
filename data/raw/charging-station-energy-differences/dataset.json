@@ -1,0 +1,28 @@
+{
+  "dataset_id": "EVRP-010",
+  "name": "Charging-station energy differences",
+  "problem_families": [
+    "EVRP heterogeneous station energy"
+  ],
+  "official_source_url": "https://data.mendeley.com/datasets/4ktbt29z5x/1",
+  "dataset_doi": "10.17632/4ktbt29z5x.1",
+  "version": "Version 1 (2023)",
+  "published_instance_count": null,
+  "key_parameters": [
+    "station-specific energy differences/attributes (exact fields in README)"
+  ],
+  "recommended_use_cases": "heterogeneous charging station energy characteristics; station-choice sensitivity",
+  "compatibility": {
+    "EVRP-station-energy": "candidate_direct (schema validation pending)"
+  },
+  "provenance_status": "dataset_published_schema_not_yet_inspected",
+  "licence_status": "CC BY 4.0",
+  "notes": "Mendeley record describes three distinct data sets/configurations, not necessarily three individual problem instances. Inspect readme.txt before formal parameter mapping.",
+  "related_citation_ids": [
+    "P11"
+  ],
+  "repository_folder": "data/raw/charging-station-energy-differences",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

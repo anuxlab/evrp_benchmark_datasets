@@ -1,0 +1,43 @@
+{
+  "dataset_id": "EVRP-002",
+  "name": "Schneider-Goeke E-VRPTW instances",
+  "problem_families": [
+    "E-VRPTW",
+    "E-CVRPTW"
+  ],
+  "official_source_url": "https://data.mendeley.com/datasets/h3mrm5dhxw/1",
+  "dataset_doi": "10.17632/h3mrm5dhxw.1",
+  "version": "Version 1 (2019)",
+  "published_instance_count": 92,
+  "key_parameters": [
+    "node type",
+    "coordinates",
+    "demand",
+    "ready time",
+    "due date",
+    "service time",
+    "battery Q",
+    "load capacity C",
+    "energy rate r",
+    "inverse refueling rate g",
+    "speed v"
+  ],
+  "recommended_use_cases": "time windows; clustered/random/random-clustered customer distributions; EVRP baselines and charging policy experiments",
+  "compatibility": {
+    "EVRPTW": "direct_fit",
+    "EVRP": "conditional_fit (relax time windows)",
+    "E-CVRP": "direct_fit",
+    "nonlinear_charging": "unsupported",
+    "dynamic_price": "unsupported"
+  },
+  "provenance_status": "research_published_and_officially_hosted",
+  "licence_status": "CC BY-NC 3.0",
+  "notes": "The supplied archive contains 92 TXT instance files. Preserve the non-commercial restriction and cite both the dataset DOI and the 2014 paper.",
+  "related_citation_ids": [
+    "P01"
+  ],
+  "repository_folder": "data/raw/mendeley-evrptw",
+  "local_status": "locally_ingested_and_parser_validated",
+  "local_instance_count": 92,
+  "acquisition_method": "provided_archive_snapshot"
+}

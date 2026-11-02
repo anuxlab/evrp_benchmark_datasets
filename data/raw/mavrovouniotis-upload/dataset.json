@@ -1,0 +1,43 @@
+{
+  "dataset_id": "EVRP-001",
+  "name": "Mavrovouniotis E-CVRP benchmark (current upstream listing)",
+  "problem_families": [
+    "E-CVRP",
+    "load-dependent energy E-CVRP"
+  ],
+  "official_source_url": "https://github.com/Mavrovouniotis/e-cvrp_benchmark_instances",
+  "dataset_doi": null,
+  "version": "GitHub master snapshot; pin commit before experiments",
+  "published_instance_count": 24,
+  "key_parameters": [
+    "coordinates",
+    "depot",
+    "customer demands",
+    "vehicle count",
+    "payload capacity",
+    "battery capacity",
+    "energy consumption",
+    "charging-station nodes",
+    "distance metric",
+    "published objective reference"
+  ],
+  "recommended_use_cases": "classical E-CVRP; load-dependent energy; charging-station density; scaling and metaheuristic comparison",
+  "compatibility": {
+    "E-CVRP": "direct_fit",
+    "EVRP": "direct_fit",
+    "EVRPTW": "unsupported",
+    "dynamic_price": "unsupported",
+    "nonlinear_charging": "unsupported",
+    "heterogeneous_fleet": "unsupported"
+  },
+  "provenance_status": "research_published_and_officially_hosted",
+  "licence_status": "upstream repository terms must be checked before redistribution",
+  "notes": "The uploaded 17-file ZIP is a separate historical/local snapshot; do not label it as the current 24-instance upstream listing. Current upstream file list has 24 .evrp instances.",
+  "related_citation_ids": [
+    "P02"
+  ],
+  "repository_folder": "data/raw/mavrovouniotis-upload",
+  "local_status": "locally_ingested_and_parser_validated",
+  "local_instance_count": 17,
+  "acquisition_method": "provided_archive_snapshot"
+}

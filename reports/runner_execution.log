@@ -1,0 +1,62 @@
+{
+  "files_discovered": 109,
+  "files_available_in_selected_datasets": 109,
+  "files_available_in_all_local_corpus": 109,
+  "sample_mode": false,
+  "instance_mode": "all",
+  "selected_datasets": [
+    "EVRP-001",
+    "EVRP-002",
+    "EVRP-003",
+    "EVRP-004",
+    "EVRP-005",
+    "EVRP-006",
+    "EVRP-007",
+    "EVRP-008",
+    "EVRP-009",
+    "EVRP-010",
+    "EVRP-011",
+    "EVRP-012",
+    "EVRP-013",
+    "EVRP-014",
+    "EVRP-015"
+  ],
+  "datasets_with_local_files": [
+    "EVRP-001",
+    "EVRP-002"
+  ],
+  "selected_datasets_without_local_files": [
+    "EVRP-003",
+    "EVRP-004",
+    "EVRP-005",
+    "EVRP-006",
+    "EVRP-007",
+    "EVRP-008",
+    "EVRP-009",
+    "EVRP-010",
+    "EVRP-011",
+    "EVRP-012",
+    "EVRP-013",
+    "EVRP-014",
+    "EVRP-015"
+  ],
+  "problem_variant": "all",
+  "max_instances": 0,
+  "passed": 109,
+  "failed": 0,
+  "formats": {
+    "mavrovouniotis_evrp": 17,
+    "schneider_evrptw_tabular": 92
+  },
+  "filtered_out_by_problem_variant": 0
+}
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 718, in _warm_feature_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 509, in _warm_drawing_and_image_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/generated/interface/models.py", line 32861, in bring_to_front
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/remote.py", line 764, in __call__
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/client.py", line 175, in call
+artifact_tool.rpc.client.RemoteError: Element ordering requires an owning element collection.

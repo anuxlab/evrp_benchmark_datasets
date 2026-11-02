@@ -1,0 +1,31 @@
+﻿2026-11-02T05:05:24.6297347Z ##[group]Run python -m pip install --upgrade pip pytest
+2026-11-02T05:05:24.6299082Z [36;1mpython -m pip install --upgrade pip pytest[0m
+2026-11-02T05:05:24.6337702Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:05:24.6338805Z env:
+2026-11-02T05:05:24.6339926Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:24.6341794Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:05:24.6343675Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:24.6345589Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:24.6347298Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:24.6349007Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:05:24.6350429Z ##[endgroup]
+2026-11-02T05:05:25.2006011Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages (26.2.2)
+2026-11-02T05:05:25.3589908Z Collecting pytest
+2026-11-02T05:05:25.4252607Z   Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+2026-11-02T05:05:25.4576588Z Collecting iniconfig>=2 (from pytest)
+2026-11-02T05:05:25.4758081Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-11-02T05:05:25.5081188Z Collecting packaging>=24 (from pytest)
+2026-11-02T05:05:25.5274107Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-11-02T05:05:25.5573628Z Collecting pluggy<2,>=1.6 (from pytest)
+2026-11-02T05:05:25.5757251Z   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+2026-11-02T05:05:25.6107599Z Collecting pygments>=2.15 (from pytest)
+2026-11-02T05:05:25.6286105Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-11-02T05:05:25.6515939Z Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+2026-11-02T05:05:25.7210347Z Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+2026-11-02T05:05:25.7410741Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-11-02T05:05:25.7612384Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-11-02T05:05:25.7818213Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-11-02T05:05:25.8112614Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 41.9 MB/s  0:00:00
+2026-11-02T05:05:25.8842935Z Installing collected packages: pygments, pluggy, packaging, iniconfig, pytest
+2026-11-02T05:05:26.8808656Z 
+2026-11-02T05:05:26.8817900Z Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0

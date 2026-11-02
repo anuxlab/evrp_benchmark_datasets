@@ -1,0 +1,82 @@
+name: Pull request validation
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Create report directories
+        run: mkdir -p reports runner-logs
+
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          set -o pipefail
+          python -m pip install --upgrade pip pytest 2>&1 | tee runner-logs/install.txt
+
+      - name: Run test suite
+        run: |
+          set -o pipefail
+          PYTHONPATH=src pytest -vv 2>&1 | tee runner-logs/pytest.txt
+
+      - name: Validate registry
+        run: |
+          set -o pipefail
+          PYTHONPATH=src python -c "from pathlib import Path; from evrp_bench.registry import load_registry, validate_registry; e=validate_registry(load_registry(Path('data/registry/evrp_dataset_registry.json'))); print(e or 'Registry OK'); raise SystemExit(bool(e))" 2>&1 | tee runner-logs/registry.txt
+
+      - name: Validate complete local corpus
+        run: |
+          set -o pipefail
+          PYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports --dataset all --problem-variant all --instance-mode all 2>&1 | tee runner-logs/corpus.txt
+
+      - name: Upload PR validation evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: evrp-pr-validation-${{ github.run_number }}
+          path: |
+            reports/
+            runner-logs/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Open issue for trusted same-repository failures
+        if: failure() && (github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const labels = [
+              {name:"datasets", color:"1D76DB", description:"EVRP dataset acquisition, parsing or validation"},
+              {name:"ci-failure", color:"B60205", description:"Continuous integration failure"},
+              {name:"workflow-failure", color:"D93F0B", description:"GitHub Actions workflow failed"}
+            ];
+            for (const label of labels) {
+              try { await github.rest.issues.getLabel({...context.repo, name:label.name}); }
+              catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+            }
+            const title = `[CI] PR validation failed — run ${context.runNumber}`;
+            const open = await github.rest.issues.listForRepo({...context.repo, state:"open", per_page:100});
+            if (!open.data.some(i => i.title === title)) {
+              await github.rest.issues.create({
+                ...context.repo, title,
+                body: `Validation failed. Review run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\nCommit: ${context.sha}\nDownload the artifact for logs and reports.`,
+                labels:["datasets","ci-failure","workflow-failure"]
+              });
+            }

@@ -1,0 +1,50 @@
+name: Dataset source proposal
+description: Propose a new EVRP benchmark dataset or instance family
+title: "[DATASET] "
+labels: ["datasets"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Dataset name
+      placeholder: Official dataset / benchmark name
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source URL
+    validations:
+      required: true
+  - type: input
+    id: doi
+    attributes:
+      label: Dataset DOI and primary paper DOI
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem family and key characteristics
+      description: EVRP variant, constraints, fleet, charging and energy features.
+    validations:
+      required: true
+  - type: textarea
+    id: parameters
+    attributes:
+      label: Parameters and units
+      description: Include source symbols, definitions and units.
+    validations:
+      required: true
+  - type: input
+    id: count
+    attributes:
+      label: Expected number of instances
+  - type: input
+    id: license
+    attributes:
+      label: Licence / redistribution terms
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes, use cases and known limitations

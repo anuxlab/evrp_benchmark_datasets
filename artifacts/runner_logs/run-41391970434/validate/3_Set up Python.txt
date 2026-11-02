@@ -1,0 +1,18 @@
+﻿2026-11-02T05:05:23.9512743Z ##[group]Run actions/setup-python@v5
+2026-11-02T05:05:23.9514041Z with:
+2026-11-02T05:05:23.9515326Z   python-version: 3.11
+2026-11-02T05:05:23.9516362Z   cache: pip
+2026-11-02T05:05:23.9517293Z   check-latest: false
+2026-11-02T05:05:23.9528096Z   token: ***
+2026-11-02T05:05:23.9529076Z   update-environment: true
+2026-11-02T05:05:23.9530228Z   allow-prereleases: false
+2026-11-02T05:05:23.9531350Z   freethreaded: false
+2026-11-02T05:05:23.9607503Z ##[endgroup]
+2026-11-02T05:05:24.1049014Z ##[group]Installed versions
+2026-11-02T05:05:24.1166935Z (node:2390) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-02T05:05:24.1171961Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-02T05:05:24.1175296Z Successfully set up CPython (3.11.17)
+2026-11-02T05:05:24.1178365Z ##[endgroup]
+2026-11-02T05:05:24.1976072Z [command]/opt/hostedtoolcache/Python/3.11.17/x64/bin/pip cache dir
+2026-11-02T05:05:24.5247584Z /home/runner/.cache/pip
+2026-11-02T05:05:24.6091386Z pip cache is not found

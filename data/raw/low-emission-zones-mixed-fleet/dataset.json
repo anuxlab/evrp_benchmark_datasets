@@ -1,0 +1,35 @@
+{
+  "dataset_id": "EVRP-012",
+  "name": "Mixed-fleet VRP with low-emission zones (EVRPTW-derived + Milan case)",
+  "problem_families": [
+    "mixed-fleet EVRP",
+    "low-emission-zone routing",
+    "real-road case study"
+  ],
+  "official_source_url": "https://data.mendeley.com/datasets/np452gmj7f/2",
+  "dataset_doi": "10.17632/np452gmj7f.2",
+  "version": "Version 2 (2025)",
+  "published_instance_count": null,
+  "key_parameters": [
+    "Schneider-derived EVRPTW base data",
+    "LEZ centre and radius",
+    "vehicle fleet types",
+    "Milan Area C real-road distances"
+  ],
+  "recommended_use_cases": "urban fleet transition; low-emission zones; mixed fleet; real road-distance case studies",
+  "compatibility": {
+    "mixed_fleet_LEZ": "candidate_direct (schema validation pending)",
+    "base_EVPRTW": "conditional_fit"
+  },
+  "provenance_status": "research_published_and_officially_hosted",
+  "licence_status": "CC BY 4.0",
+  "notes": "This is a derived dataset: cite both the dataset DOI and its paper, and explicitly acknowledge Schneider et al. as the parent benchmark.",
+  "related_citation_ids": [
+    "P01",
+    "P13"
+  ],
+  "repository_folder": "data/raw/low-emission-zones-mixed-fleet",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

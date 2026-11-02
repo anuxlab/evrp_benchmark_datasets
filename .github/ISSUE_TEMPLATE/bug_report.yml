@@ -1,0 +1,38 @@
+name: Dataset / parser / workflow bug
+description: Report a dataset, parser, documentation or CI problem
+title: "[BUG] "
+labels: ["datasets"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - dataset acquisition
+        - parser
+        - provenance / citations
+        - problem compatibility
+        - GitHub Actions workflow
+        - documentation
+    validations:
+      required: true
+  - type: input
+    id: dataset_id
+    attributes:
+      label: Dataset ID / instance filename
+  - type: input
+    id: run_url
+    attributes:
+      label: GitHub Actions run URL
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour and logs
+    validations:
+      required: true

@@ -1,0 +1,37 @@
+{
+  "dataset_id": "EVRP-011",
+  "name": "EVRP with backhauls and time windows under uncertainty (EVRPBTW-USUT)",
+  "problem_families": [
+    "EVRPBTW-USUT",
+    "backhauls",
+    "time windows",
+    "uncertain travel/service times"
+  ],
+  "official_source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.6hdr7srbv",
+  "dataset_doi": "10.5061/dryad.6hdr7srbv",
+  "version": "Dryad version 2025",
+  "published_instance_count": 60,
+  "key_parameters": [
+    "backhaul demand",
+    "time windows",
+    "travel-time uncertainty",
+    "service-time uncertainty",
+    "deterministic and robust solutions",
+    "real case network/time/distance matrices"
+  ],
+  "recommended_use_cases": "robust/stochastic routing; backhaul operations; deterministic-vs-robust methods; real-case validation",
+  "compatibility": {
+    "EVRPBTW-USUT": "candidate_direct (archive parser pending)",
+    "standard_EVPRTW": "conditional_fit"
+  },
+  "provenance_status": "research_dataset_hosted_schema_not_yet_inspected",
+  "licence_status": "Dryad dataset terms to be checked",
+  "notes": "The GitHub README describes 60 synthetic instances (25/50/100 customers) plus a 47-customer real case. Counts should be rechecked against archive manifest before validation.",
+  "related_citation_ids": [
+    "P14"
+  ],
+  "repository_folder": "data/raw/evrp-backhauls-uncertainty",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

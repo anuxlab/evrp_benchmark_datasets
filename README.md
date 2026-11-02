@@ -1,64 +1,178 @@
-# EVRP Benchmark Lab
+# EVRP Benchmark Datasets
 
-**A source-aware, research-oriented catalogue and validation pipeline for diversified Electric Vehicle Routing Problem (EVRP) benchmark instances.**
+[![Catalogued collections](https://img.shields.io/badge/catalogued%20collections-15-2563eb)](DATASET_CATALOG.md)
+[![Locally integrated](https://img.shields.io/badge/locally%20integrated-2-16a34a)](data/registry/evrp_dataset_registry.json)
+[![Locally validated instances](https://img.shields.io/badge/instances%20validated-109-16a34a)](reports/dataset_summary.csv)
+[![Validation](https://img.shields.io/badge/CI-manual%20%2B%20PR-0f766e)](.github/workflows/)
+[![Python](https://img.shields.io/badge/python-3.11%2B-3776ab)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/code%20license-MIT-yellow.svg)](LICENSE)
 
-The repository is intended for researchers and practitioners comparing routing formulations and algorithms across classical EVRP, time windows, nonlinear/partial charging, charger capacity, mixed fleets, load/gradient-dependent energy, dynamic pricing/V2G, two-echelon logistics and adjacent electric mobility problems.
+**A provenance-first, research-oriented collection of Electric Vehicle Routing Problem (EVRP) benchmark sources, instance files, dataset documentation, and reproducible validation workflows.**
 
-> **Current scope:** dataset registry, provenance/citation checks, parsing and smoke tests for the two user-supplied corpora. External datasets are catalogued with official links and citations, but are not claimed as downloaded or locally validated until an adapter and archive-level test are added. No optimization algorithms or solution feasibility claims are included yet.
+The goal is to help researchers and practitioners evaluate algorithms across diverse routing formulations—not to present unrelated problem variants as if they were interchangeable.
+
+> **Corpus status (2 November 2026):** 15 curated source collections are catalogued (12 freight EVRP/VRP variants and 3 adjacent electric-mobility families). Two collections currently have raw files locally integrated: 17 Mavrovouniotis-uploaded `.evrp` instances and 92 Schneider/Goeke EVRPTW `.txt` instances, for **109 parser-validated local instances**. The other 13 source folders contain source-specific READMEs and acquisition instructions, but are not falsely counted as locally downloaded data.
+
+## At a glance
+
+| Metric | Current count | Meaning |
+|---|---:|---|
+| Curated source collections | **15** | Research/official source records with citations and problem-family metadata |
+| Locally integrated datasets | **2** | Actual raw files present in this repository snapshot |
+| Locally available instances | **109** | 17 `.evrp` + 92 EVRPTW `.txt` files |
+| Parser-level passes in supplied runner | **109 / 109** | Structural parsing only; not mathematical feasibility or optimality |
+| Additional source folders | **13** | README, metadata and acquisition/licence instructions; files not yet ingested |
+
+Counts are generated from the current registry and validation snapshot. They will change only after a source release has been acquired, licence-reviewed, checksummed, parsed and validated.
+
+## Benchmark diversity
+
+The catalogue covers:
+
+- Classical EVRP / E-CVRP and load-dependent energy
+- EVRPTW and mixed electric/conventional fleets
+- Nonlinear charging and capacitated charging stations
+- Multiple charging technologies and partial recharging
+- Two-echelon EVRP
+- Dynamic electricity prices and vehicle-to-grid (V2G)
+- Road-gradient and load-dependent energy
+- Backhauls and uncertain travel/service conditions
+- Low-emission-zone routing
+- Adjacent electric dial-a-ride, EV-drone routing and electric shuttle DARP
+
+See [Dataset catalogue](DATASET_CATALOG.md) and [Problem taxonomy](docs/PROBLEM_TAXONOMY.md).
+
+## Repository layout
+
+```text
+.
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows/
+│       ├── dataset-smoke-tests.yml
+│       ├── custom-benchmark-validation.yml
+│       └── pr-validation.yml
+├── data/
+│   ├── raw/                         # 15 source folders; 2 currently contain raw files
+│   ├── registry/evrp_dataset_registry.json
+│   ├── acquisition_status.csv
+│   └── manifest.json
+├── docs/
+│   ├── CITATION_AND_PROVENANCE.md
+│   ├── CONTRIBUTING.md
+│   ├── DATA_DICTIONARY.md
+│   ├── PROBLEM_TAXONOMY.md
+│   └── RUNNER_LOGS_AND_ARTIFACTS.md
+├── artifacts/
+│   ├── runner_logs/                 # supplied full runner log export
+│   └── runner_reports/              # supplied JSON/CSV/Markdown report snapshot
+├── reports/                         # current local validation reports
+├── src/evrp_bench/                  # parsers, registry, compatibility and runner
+└── tests/
+```
 
 ## Start here
 
-- [Dataset catalogue](DATASET_CATALOG.md)
-- [Machine-readable registry](data/registry/evrp_dataset_registry.json)
-- [Problem taxonomy and eligibility](docs/PROBLEM_TAXONOMY.md)
-- [Citation and provenance policy](docs/CITATION_AND_PROVENANCE.md)
-- [Parameter dictionary](docs/DATA_DICTIONARY.md)
-- [Roadmap](docs/ROADMAP.md)
-- [Initial parser validation](INITIAL_VALIDATION.md)
+- [Changelog](CHANGELOG.md)
 
-## What is catalogued?
+1. Read the dataset-specific `README.md` inside the corresponding `data/raw/<dataset-folder>/`.
+2. Check [DATASET_CATALOG.md](DATASET_CATALOG.md) for source links, DOI, publication, use cases and eligibility.
+3. Check [data/registry/evrp_dataset_registry.json](data/registry/evrp_dataset_registry.json) for machine-readable metadata.
+4. Review [data/acquisition_status.csv](data/acquisition_status.csv) before assuming a dataset is locally available.
+5. Read [citation and provenance rules](docs/CITATION_AND_PROVENANCE.md) before publishing results.
 
-The registry includes 15 source records spanning Mavrovouniotis E-CVRP, Schneider-Goeke E-VRPTW, Montoya nonlinear charging, Froger/DIMACS capacitated charging variants, Goeke-Schneider mixed fleet, Felipe multiple charging technologies/partial recharge, Akbay two-echelon EVRP, dynamic pricing/V2G, gradient-aware EVRPTW, station energy heterogeneity, uncertain backhaul EVRP, low-emission-zone mixed fleet, electric dial-a-ride, EV-drone routing and electric-shuttle DARP. See each record for publication links, source version, parameters, licence status and compatibility caveats.
-
-## Locally ingested snapshots
-
-- `data/raw/mavrovouniotis-upload/`: 17 `.evrp` files supplied by the user. This is a distinct historical/uploaded snapshot, not the current upstream GitHub listing (24 `.evrp` instances observed in the current repository listing).
-- `data/raw/mendeley-evrptw/evrptw_instances/`: 92 `.txt` instance files supplied from Mendeley Data version 1.
-
-Raw snapshots are preserved. Do not overwrite or rename source files to make them appear to belong to another release. `data/manifest.json` stores file sizes and SHA-256 checksums.
-
-## Local setup
+## Local installation and validation
 
 ```bash
+git clone https://github.com/anuxlab/evrp_benchmark_datasets.git
+cd evrp_benchmark_datasets
+
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-python -m pip install --upgrade pip pytest
-PYTHONPATH=src pytest -q
-PYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[test]"
+
+# Unit tests and registry checks
+PYTHONPATH=src pytest -vv
+
+# All currently local instances
+PYTHONPATH=src python -m evrp_bench.runner \
+  --data data/raw --out reports \
+  --dataset all --problem-variant all --instance-mode all
+
+# One source collection
+PYTHONPATH=src python -m evrp_bench.runner \
+  --data data/raw --out reports --dataset EVRP-001
+
+# Representative samples from all locally integrated collections
+PYTHONPATH=src python -m evrp_bench.runner \
+  --data data/raw --out reports --dataset all --instance-mode representative
+
+# Exact instance selection
+PYTHONPATH=src python -m evrp_bench.runner \
+  --data data/raw --out reports --dataset EVRP-001 \
+  --instance-mode custom --instance-names "E-n22-k4.evrp"
 ```
 
 ## GitHub Actions
 
-`.github/workflows/dataset-smoke-tests.yml` is manually triggered only (`workflow_dispatch`); there is no push or pull-request trigger. It validates tests, the source registry and optionally all locally committed instances. It uploads reports as workflow artifacts. It does not install optimization solvers or download unreviewed third-party archives.
+All workflows retain manual execution for benchmark runs. The repository additionally runs lightweight pull-request checks.
 
-## Trust and compatibility labels
+### 1. Smoke test
 
-- `direct_fit`: required problem attributes are present in the documented dataset schema.
-- `conditional_fit`: usable only after an explicit transformation or assumption (e.g., relaxing time windows).
-- `candidate_direct`: source description indicates the feature, but the files/units have not yet been inspected.
-- `unsupported`: required fields or structural features are absent.
-- `not_applicable`: related but distinct problem family (e.g., dial-a-ride rather than freight EVRP).
+`.github/workflows/dataset-smoke-tests.yml`
 
-A parser pass only proves that the implemented parser could read required structural fields. It does not prove mathematical feasibility, route feasibility, optimality, or full scientific suitability.
+- Run all local files or representative examples.
+- Check parser and registry integrity.
+- Upload JSON, CSV, Markdown reports and runner logs.
 
-## Citation rule
+### 2. Custom benchmark validation
 
-Every experiment must cite both (1) the exact dataset version/DOI or pinned repository commit and (2) the primary paper defining the benchmark/problem. For a derived benchmark, cite its extension paper and the parent dataset paper. Follow [docs/CITATION_AND_PROVENANCE.md](docs/CITATION_AND_PROVENANCE.md).
+`.github/workflows/custom-benchmark-validation.yml`
 
-## Data licensing
+Open **Actions → Custom EVRP benchmark validation → Run workflow**. The form provides:
 
-Publicly downloadable does not mean freely redistributable. Third-party corpora are external references by default. For example, the Schneider-Goeke Mendeley dataset is marked CC BY-NC 3.0; do not assume commercial redistribution rights. Review every exact version's licence before vendoring it.
+| Input | Choices / purpose |
+|---|---|
+| Dataset | `all` or a registered dataset ID (`EVRP-001` … `EVRP-015`) |
+| Problem variant | `all`, EVRP, E-CVRP, EVRPTW, nonlinear charging, capacitated stations, mixed fleet, 2E-EVRP, V2G, gradient, DARP, EV-drone |
+| Instance mode | `all`, `representative`, `custom` |
+| Instance names | Exact comma-separated filenames for custom mode |
+| Max instances | `0` for unlimited, otherwise a positive cap |
+| Validation level | `quick`, `standard`, `strict` |
+| Fail on empty | Fail if no matching local instance exists |
 
-## Project status
+**GitHub limitation:** `workflow_dispatch` choice options are static YAML values; GitHub does not populate dropdown choices dynamically from the registry. The exact per-dataset instance list is therefore provided by `custom` filename input, with all/representative shortcuts.
 
-See [Roadmap](docs/ROADMAP.md). The next priority is controlled ingestion and adapters for Montoya/Froger, mixed-fleet, Felipe, 2E-EVRP, dynamic-price/V2G and gradient-aware datasets, followed by a canonical schema and mathematical validation.
+A selected dataset with no local files is reported as *catalogued but not ingested*. It is not silently downloaded or counted as tested.
+
+### 3. Pull-request checks
+
+`pr-validation.yml` runs tests, registry checks and corpus inventory validation for proposed changes. It does not run optimization solvers.
+
+### Failure triage
+
+When a manual validation workflow fails, it creates a GitHub Issue with labels `datasets`, `ci-failure`, and `workflow-failure`. Runner output and inspection reports are uploaded even on failure. See [runner logs and artifacts](docs/RUNNER_LOGS_AND_ARTIFACTS.md).
+
+## Compatibility and scientific validity
+
+`direct_fit`, `conditional_fit`, `candidate_direct`, `unsupported` and `not_applicable` are dataset-capability assessments. A parser pass means only that the implemented parser could read the expected structural fields. It is **not** proof of route feasibility, solver feasibility, optimality, or reproducibility of a published result.
+
+Do not add time windows, prices, charging curves, fleet heterogeneity, road gradients or other missing fields without labelling the result as a derived instance and recording every assumption.
+
+## Citation
+
+If you use this repository, please cite the collection **and** the original dataset release and primary paper for each benchmark family used. Copy-ready APA, IEEE, BibTeX and Chicago styles are in [docs/CITATION_AND_PROVENANCE.md](docs/CITATION_AND_PROVENANCE.md). The repository also provides [CITATION.cff](CITATION.cff).
+
+## Licensing
+
+The software code is MIT-licensed. Each dataset retains its own licence and attribution requirements. Public availability does not imply redistribution rights; some datasets may only be linked with download instructions. Review the README and licence of every source folder before commercial or public redistribution.
+
+## Contributing
+
+New datasets, format adapters, parameter dictionaries and validation tests are welcome. Follow [CONTRIBUTING.md](docs/CONTRIBUTING.md), open a dataset issue first for a new source, and submit a PR with provenance, licence review, tests and a validation report.
+
+## Scope and roadmap
+
+Current release: catalogue + two locally ingested snapshots + parser/registry validation + configurable CI. Next work: acquire and validate the remaining 13 source families, add dedicated format adapters, implement a canonical typed schema and mathematical consistency checks, then introduce solver adapters and reproducible algorithm benchmarking.

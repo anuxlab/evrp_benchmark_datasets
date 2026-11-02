@@ -1,0 +1,36 @@
+{
+  "dataset_id": "EVRP-003",
+  "name": "Montoya et al. nonlinear charging benchmark",
+  "problem_families": [
+    "E-VRP-NL"
+  ],
+  "official_source_url": "https://www.vrp-rep.org/datasets/item/2016-0020.html",
+  "dataset_doi": null,
+  "version": "VRP-REP ID 2016-0020",
+  "published_instance_count": 120,
+  "key_parameters": [
+    "customer service times",
+    "charging stations",
+    "battery capacity",
+    "travel times",
+    "arc energy consumption",
+    "piecewise-linear concave charging curves",
+    "partial recharge decisions"
+  ],
+  "recommended_use_cases": "nonlinear charging; partial recharge; comparison of charging models; charging-decision heuristics",
+  "compatibility": {
+    "E-VRP-NL": "direct_fit",
+    "linear_charging_EVRP": "conditional_fit (model simplification)",
+    "E-VRPTW": "unsupported unless windows supplied"
+  },
+  "provenance_status": "research_published_and_repository_catalogued",
+  "licence_status": "VRP-REP public listing; instance-level redistribution terms require source check",
+  "notes": "Official VRP-REP catalogue lists 120 instances. DIMACS identifies this as the E-VRP-NL base set. Retrieve exact files from VRP-REP/DIMACS source and validate.",
+  "related_citation_ids": [
+    "P03"
+  ],
+  "repository_folder": "data/raw/montoya-nonlinear-charging",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

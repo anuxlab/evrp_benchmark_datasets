@@ -1,7 +1,7 @@
 {
   "registry_version": "1.0.0",
   "last_reviewed": "2026-11-02",
-  "policy": "A record in this registry is not proof that its files are locally downloaded or parsed. Local validation state is tracked separately.",
+  "policy": "A record in this registry is not proof that its files are locally downloaded or parsed. Local validation state is tracked separately. A source record is not counted as locally integrated until original files are acquired, licence-reviewed, checksummed, parsed and validated.",
   "datasets": [
     {
       "dataset_id": "EVRP-001",
@@ -40,7 +40,11 @@
       "notes": "The uploaded 17-file ZIP is a separate historical/local snapshot; do not label it as the current 24-instance upstream listing. Current upstream file list has 24 .evrp instances.",
       "related_citation_ids": [
         "P02"
-      ]
+      ],
+      "repository_folder": "data/raw/mavrovouniotis-upload",
+      "local_status": "locally_ingested_and_parser_validated",
+      "local_instance_count": 17,
+      "acquisition_method": "provided_archive_snapshot"
     },
     {
       "dataset_id": "EVRP-002",
@@ -79,7 +83,11 @@
       "notes": "The supplied archive contains 92 TXT instance files. Preserve the non-commercial restriction and cite both the dataset DOI and the 2014 paper.",
       "related_citation_ids": [
         "P01"
-      ]
+      ],
+      "repository_folder": "data/raw/mendeley-evrptw",
+      "local_status": "locally_ingested_and_parser_validated",
+      "local_instance_count": 92,
+      "acquisition_method": "provided_archive_snapshot"
     },
     {
       "dataset_id": "EVRP-003",
@@ -111,7 +119,11 @@
       "notes": "Official VRP-REP catalogue lists 120 instances. DIMACS identifies this as the E-VRP-NL base set. Retrieve exact files from VRP-REP/DIMACS source and validate.",
       "related_citation_ids": [
         "P03"
-      ]
+      ],
+      "repository_folder": "data/raw/montoya-nonlinear-charging",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-004",
@@ -141,7 +153,11 @@
       "related_citation_ids": [
         "P03",
         "P04"
-      ]
+      ],
+      "repository_folder": "data/raw/froger-capacitated-stations",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-005",
@@ -174,7 +190,11 @@
       "related_citation_ids": [
         "P05",
         "P12"
-      ]
+      ],
+      "repository_folder": "data/raw/goeke-schneider-mixed-fleet",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-006",
@@ -205,7 +225,11 @@
       "notes": "VRP-REP currently catalogues 41 instances; some review literature describes a 60-instance FORT collection. Treat the discrepancy as unresolved until the precise release/archive is reconciled; do not combine counts.",
       "related_citation_ids": [
         "P06"
-      ]
+      ],
+      "repository_folder": "data/raw/felipe-multiple-technologies",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-007",
@@ -241,7 +265,11 @@
       "related_citation_ids": [
         "P07",
         "P08"
-      ]
+      ],
+      "repository_folder": "data/raw/akbay-two-echelon",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-008",
@@ -270,7 +298,11 @@
       "notes": "Mendeley data record is available; inspect files and any linked paper before promoting compatibility to direct_fit.",
       "related_citation_ids": [
         "P10"
-      ]
+      ],
+      "repository_folder": "data/raw/v2g-dynamic-pricing",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-009",
@@ -302,7 +334,11 @@
       "related_citation_ids": [
         "P01",
         "P09"
-      ]
+      ],
+      "repository_folder": "data/raw/gradient-aware-evrptw",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-010",
@@ -326,7 +362,11 @@
       "notes": "Mendeley record describes three distinct data sets/configurations, not necessarily three individual problem instances. Inspect readme.txt before formal parameter mapping.",
       "related_citation_ids": [
         "P11"
-      ]
+      ],
+      "repository_folder": "data/raw/charging-station-energy-differences",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-011",
@@ -359,7 +399,11 @@
       "notes": "The GitHub README describes 60 synthetic instances (25/50/100 customers) plus a 47-customer real case. Counts should be rechecked against archive manifest before validation.",
       "related_citation_ids": [
         "P14"
-      ]
+      ],
+      "repository_folder": "data/raw/evrp-backhauls-uncertainty",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-012",
@@ -390,7 +434,11 @@
       "related_citation_ids": [
         "P01",
         "P13"
-      ]
+      ],
+      "repository_folder": "data/raw/low-emission-zones-mixed-fleet",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-013",
@@ -425,7 +473,11 @@
       "related_citation_ids": [
         "P15",
         "P16"
-      ]
+      ],
+      "repository_folder": "data/raw/electric-dial-a-ride",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-014",
@@ -454,7 +506,11 @@
       "related_citation_ids": [
         "P17",
         "P01"
-      ]
+      ],
+      "repository_folder": "data/raw/electric-vehicle-drone-routing",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     },
     {
       "dataset_id": "EVRP-015",
@@ -486,7 +542,11 @@
       "provenance_status": "recent_zenodo_release_schema_not_yet_inspected",
       "licence_status": "verify exact Zenodo record licence before redistribution",
       "notes": "New adjacent dataset published 19 October 2026. It is a DARP/mobility dataset, not a conventional freight EVRP benchmark; retain as a separate family.",
-      "related_citation_ids": []
+      "related_citation_ids": [],
+      "repository_folder": "data/raw/electric-shuttle-darp",
+      "local_status": "catalogued_not_yet_ingested",
+      "local_instance_count": 0,
+      "acquisition_method": "official_source_link_manual_or_api_review_required"
     }
   ],
   "local_snapshots": [

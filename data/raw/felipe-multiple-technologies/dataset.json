@@ -1,0 +1,35 @@
+{
+  "dataset_id": "EVRP-006",
+  "name": "Felipe et al. GVRP multiple technologies and partial recharges",
+  "problem_families": [
+    "GVRP-MTPR",
+    "multiple charging technologies",
+    "partial recharge"
+  ],
+  "official_source_url": "https://www.vrp-rep.org/datasets/item/2018-0004.html",
+  "dataset_doi": null,
+  "version": "VRP-REP ID 2018-0004",
+  "published_instance_count": 41,
+  "key_parameters": [
+    "multiple recharge technologies",
+    "station/technology compatibility",
+    "partial recharge amounts",
+    "vehicle autonomy",
+    "geographical instance attributes"
+  ],
+  "recommended_use_cases": "partial recharge; charger technology choice; mixed charging infrastructure",
+  "compatibility": {
+    "GVRP-MTPR": "direct_fit",
+    "single_technology_EVRP": "conditional_fit (restrict technology choices)"
+  },
+  "provenance_status": "research_published_and_repository_catalogued",
+  "licence_status": "VRP-REP public listing; source terms to be checked",
+  "notes": "VRP-REP currently catalogues 41 instances; some review literature describes a 60-instance FORT collection. Treat the discrepancy as unresolved until the precise release/archive is reconciled; do not combine counts.",
+  "related_citation_ids": [
+    "P06"
+  ],
+  "repository_folder": "data/raw/felipe-multiple-technologies",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

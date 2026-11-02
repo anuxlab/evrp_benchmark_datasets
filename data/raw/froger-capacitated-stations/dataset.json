@@ -1,0 +1,34 @@
+{
+  "dataset_id": "EVRP-004",
+  "name": "Froger capacitated charging-station variants",
+  "problem_families": [
+    "E-VRP-NL-C",
+    "capacitated charging stations"
+  ],
+  "official_source_url": "https://dimacs.rutgers.edu/programs/implementation-challenges/vehicle-routing/implementation-challenge-vehicle-routing/electric-vehicle-routing-problem",
+  "dataset_doi": null,
+  "version": "DIMACS challenge benchmark specification",
+  "published_instance_count": 240,
+  "key_parameters": [
+    "Montoya base instance",
+    "charger capacity at each station (1 or 2 chargers)",
+    "nonlinear charging curve",
+    "charging occupancy and queue interaction"
+  ],
+  "recommended_use_cases": "station congestion; charger-capacity constraints; nonlinear charging; solution checker evaluation",
+  "compatibility": {
+    "E-VRP-NL-C": "direct_fit",
+    "E-VRP-NL": "conditional_fit (remove charger capacity constraints)"
+  },
+  "provenance_status": "research_published_and_competition_specified",
+  "licence_status": "follow VRP-REP/DIMACS distribution terms",
+  "notes": "These 240 are two derived capacity variants per each of the 120 Montoya instances; they are not 240 unrelated base instances. DIMACS reports 120 base + 240 derived = 360 total across both categories.",
+  "related_citation_ids": [
+    "P03",
+    "P04"
+  ],
+  "repository_folder": "data/raw/froger-capacitated-stations",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

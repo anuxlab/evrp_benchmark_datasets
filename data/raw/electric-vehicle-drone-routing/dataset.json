@@ -1,0 +1,33 @@
+{
+  "dataset_id": "EVRP-014",
+  "name": "Electric vehicle-drone routing instances (adjacent family)",
+  "problem_families": [
+    "EV-drone routing",
+    "synchronised truck-drone routing"
+  ],
+  "official_source_url": "https://github.com/setyotw/EVDRP_instances",
+  "dataset_doi": null,
+  "version": "GitHub repository snapshot; README updated 2026-07-09",
+  "published_instance_count": 128,
+  "key_parameters": [
+    "Schneider-derived EVRP nodes",
+    "drone service/synchronization attributes",
+    "vehicle and drone operational parameters"
+  ],
+  "recommended_use_cases": "EV-drone coordination; synchronization; integrated routing",
+  "compatibility": {
+    "EVDRP": "direct_fit",
+    "freight_EVPRTW": "not_applicable"
+  },
+  "provenance_status": "research_published_and_author_hosted",
+  "licence_status": "repository states CC0-1.0",
+  "notes": "128 instances adapted from Schneider et al. Cite Mara et al. (2023) for EVDRP and Schneider et al. (2014) as the parent benchmark source. Separate adjacent problem family, not standard EVRP.",
+  "related_citation_ids": [
+    "P17",
+    "P01"
+  ],
+  "repository_folder": "data/raw/electric-vehicle-drone-routing",
+  "local_status": "catalogued_not_yet_ingested",
+  "local_instance_count": 0,
+  "acquisition_method": "official_source_link_manual_or_api_review_required"
+}

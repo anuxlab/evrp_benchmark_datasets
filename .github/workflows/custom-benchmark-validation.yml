@@ -1,0 +1,235 @@
+name: Custom EVRP benchmark validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: Dataset collection to inspect
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - EVRP-001
+          - EVRP-002
+          - EVRP-003
+          - EVRP-004
+          - EVRP-005
+          - EVRP-006
+          - EVRP-007
+          - EVRP-008
+          - EVRP-009
+          - EVRP-010
+          - EVRP-011
+          - EVRP-012
+          - EVRP-013
+          - EVRP-014
+          - EVRP-015
+      problem_variant:
+        description: Filter by intended problem family (compatibility is checked against local parser evidence)
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - EVRP
+          - E-CVRP
+          - EVRPTW
+          - Nonlinear charging
+          - Capacitated charging stations
+          - Mixed fleet
+          - Two-echelon EVRP
+          - V2G / dynamic pricing
+          - Gradient-aware EVRP
+          - Electric DARP
+          - EV-drone routing
+      instance_mode:
+        description: Inspect all local instances, representative examples, or exact filenames
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - representative
+          - custom
+      instance_names:
+        description: Exact comma-separated filenames (used only when instance_mode=custom)
+        required: false
+        type: string
+      max_instances:
+        description: Maximum number of instances (0 = unlimited)
+        required: true
+        default: "0"
+        type: string
+      validation_level:
+        description: Validation depth
+        required: true
+        type: choice
+        default: standard
+        options:
+          - quick
+          - standard
+          - strict
+      fail_on_empty:
+        description: Fail if selected dataset/variant has no locally available matching files
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: evrp-custom-validation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Create report and log directories
+        run: mkdir -p reports runner-logs
+
+      - name: Capture runner input and environment
+        run: |
+          {
+            echo "Run ID: $GITHUB_RUN_ID"
+            echo "Run number: $GITHUB_RUN_NUMBER"
+            echo "Commit: $GITHUB_SHA"
+            echo "Runner: $RUNNER_OS / $RUNNER_ARCH"
+            echo "Dataset: ${{ inputs.dataset }}"
+            echo "Problem variant: ${{ inputs.problem_variant }}"
+            echo "Instance mode: ${{ inputs.instance_mode }}"
+            echo "Instance names: ${{ inputs.instance_names }}"
+            echo "Max instances: ${{ inputs.max_instances }}"
+            echo "Validation level: ${{ inputs.validation_level }}"
+            echo "Fail on empty: ${{ inputs.fail_on_empty }}"
+            python --version || true
+            uname -a
+            df -h
+          } | tee runner-logs/00-run-context.txt
+
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install test dependencies
+        run: |
+          set -o pipefail
+          python -m pip install --upgrade pip pytest 2>&1 | tee runner-logs/01-install.txt
+
+      - name: Run unit and registry tests
+        run: |
+          set -o pipefail
+          PYTHONPATH=src pytest -vv 2>&1 | tee runner-logs/02-pytest.txt
+
+      - name: Validate source registry
+        run: |
+          set -o pipefail
+          PYTHONPATH=src python -c "from pathlib import Path; from evrp_bench.registry import load_registry, validate_registry; e=validate_registry(load_registry(Path('data/registry/evrp_dataset_registry.json'))); print('Registry validation passed' if not e else '\n'.join(e)); raise SystemExit(bool(e))" 2>&1 | tee runner-logs/03-registry.txt
+
+      - name: Inspect selected benchmark corpus
+        env:
+          INPUT_DATASET: ${{ inputs.dataset }}
+          INPUT_VARIANT: ${{ inputs.problem_variant }}
+          INPUT_INSTANCE_MODE: ${{ inputs.instance_mode }}
+          INPUT_INSTANCE_NAMES: ${{ inputs.instance_names }}
+          INPUT_MAX_INSTANCES: ${{ inputs.max_instances }}
+          INPUT_VALIDATION_LEVEL: ${{ inputs.validation_level }}
+          INPUT_FAIL_ON_EMPTY: ${{ inputs.fail_on_empty }}
+        run: |
+          set -o pipefail
+          args=(--data data/raw --out reports
+            --dataset "$INPUT_DATASET"
+            --problem-variant "$INPUT_VARIANT"
+            --instance-mode "$INPUT_INSTANCE_MODE"
+            --max-instances "$INPUT_MAX_INSTANCES")
+          if [[ "$INPUT_INSTANCE_MODE" == "custom" ]]; then
+            args+=(--instance-names "$INPUT_INSTANCE_NAMES")
+          fi
+          if [[ "$INPUT_FAIL_ON_EMPTY" == "true" || "$INPUT_VALIDATION_LEVEL" == "strict" ]]; then
+            args+=(--fail-on-empty)
+          fi
+          if [[ "$INPUT_VALIDATION_LEVEL" == "quick" && "$INPUT_INSTANCE_MODE" == "all" ]]; then
+            args+=(--instance-mode representative)
+          fi
+          PYTHONPATH=src python -m evrp_bench.runner "${args[@]}" 2>&1 | tee runner-logs/04-inspection.txt
+
+      - name: Add run metadata to report
+        if: always()
+        run: |
+          {
+            echo "# GitHub Actions run metadata"
+            echo
+            echo "- Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo "- Commit: $GITHUB_SHA"
+            echo "- Trigger: $GITHUB_EVENT_NAME"
+            echo "- Dataset: ${{ inputs.dataset }}"
+            echo "- Variant: ${{ inputs.problem_variant }}"
+            echo "- Instance mode: ${{ inputs.instance_mode }}"
+            echo "- Validation level: ${{ inputs.validation_level }}"
+          } > reports/RUN_METADATA.md
+
+      - name: Upload complete validation artifacts and runner logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: evrp-validation-${{ github.run_number }}-${{ inputs.dataset }}
+          path: |
+            reports/
+            runner-logs/
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Open a labelled GitHub Issue when the workflow fails
+        if: failure()
+        uses: actions/github-script@v8
+        env:
+          INPUT_DATASET: ${process.env.INPUT_DATASET}
+          INPUT_VARIANT: ${process.env.INPUT_VARIANT}
+          INPUT_INSTANCE_MODE: ${process.env.INPUT_INSTANCE_MODE}
+          INPUT_VALIDATION_LEVEL: ${process.env.INPUT_VALIDATION_LEVEL}
+        with:
+          script: |
+            const labels = [
+              {name: "datasets", color: "1D76DB", description: "EVRP dataset acquisition, parsing or validation"},
+              {name: "ci-failure", color: "B60205", description: "Continuous integration failure"},
+              {name: "workflow-failure", color: "D93F0B", description: "GitHub Actions workflow failed"}
+            ];
+            for (const label of labels) {
+              try { await github.rest.issues.getLabel({...context.repo, name: label.name}); }
+              catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+            }
+            const title = `[CI] Custom EVRP validation failed — run ${context.runNumber}`;
+            const existing = await github.rest.issues.listForRepo({
+              ...context.repo, state: "open", per_page: 100
+            });
+            if (existing.data.some(i => i.title === title)) {
+              core.info("A matching open issue already exists.");
+            } else {
+              const body = [
+                "## Automated workflow failure",
+                "",
+                `- Workflow: ${context.workflow}`,
+                `- Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                `- Commit: \`${context.sha}\``,
+                `- Dataset selection: \`${process.env.INPUT_DATASET}\``,
+                `- Problem variant: \`${process.env.INPUT_VARIANT}\``,
+                `- Instance mode: \`${process.env.INPUT_INSTANCE_MODE}\``,
+                `- Validation level: \`${process.env.INPUT_VALIDATION_LEVEL}\``,
+                "",
+                "Download the workflow artifact for runner logs, parser output and JSON/CSV/Markdown reports.",
+                "Please triage the failure, attach a minimal reproducer, and close this issue only after a successful rerun."
+              ].join("\n");
+              await github.rest.issues.create({
+                ...context.repo, title, body,
+                labels: ["datasets", "ci-failure", "workflow-failure"]
+              });
+            }

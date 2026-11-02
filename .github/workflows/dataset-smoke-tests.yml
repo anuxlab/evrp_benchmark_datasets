@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       run_full_corpus:
-        description: Inspect every committed instance (otherwise inspect two examples per file format)
+        description: Inspect every locally available instance (otherwise representative examples)
         required: true
         default: "true"
         type: choice
@@ -12,40 +12,87 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
-  group: evrp-dataset-validation-${{ github.ref }}
-  cancel-in-progress: true
+  group: evrp-dataset-smoke-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
+      - name: Create log directories
+        run: mkdir -p reports runner-logs
+
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-          cache: "pip"
+          cache: pip
+
       - name: Install test dependencies
-        run: python -m pip install --upgrade pip pytest
-      - name: Parser and provenance registry tests
-        run: PYTHONPATH=src pytest -q
+        run: |
+          set -o pipefail
+          python -m pip install --upgrade pip pytest 2>&1 | tee runner-logs/01-install.txt
+
+      - name: Parser, provenance and registry tests
+        run: |
+          set -o pipefail
+          PYTHONPATH=src pytest -vv 2>&1 | tee runner-logs/02-pytest.txt
+
       - name: Validate source registry
-        run: PYTHONPATH=src python -c "from pathlib import Path; from evrp_bench.registry import load_registry, validate_registry; p=Path('data/registry/evrp_dataset_registry.json'); e=validate_registry(load_registry(p)); print('Registry validation passed' if not e else '\n'.join(e)); raise SystemExit(bool(e))"
-      - name: Inspect full benchmark corpus
+        run: |
+          set -o pipefail
+          PYTHONPATH=src python -c "from pathlib import Path; from evrp_bench.registry import load_registry, validate_registry; e=validate_registry(load_registry(Path('data/registry/evrp_dataset_registry.json'))); print('Registry validation passed' if not e else '\n'.join(e)); raise SystemExit(bool(e))" 2>&1 | tee runner-logs/03-registry.txt
+
+      - name: Inspect full local corpus
         if: inputs.run_full_corpus == 'true'
-        run: PYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports
-      - name: Inspect representative smoke subset
+        run: |
+          set -o pipefail
+          PYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports --dataset all --problem-variant all --instance-mode all 2>&1 | tee runner-logs/04-inspection.txt
+
+      - name: Inspect representative subset
         if: inputs.run_full_corpus == 'false'
-        run: PYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports --sample
-      - name: Upload inspection reports
+        run: |
+          set -o pipefail
+          PYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports --dataset all --problem-variant all --instance-mode representative 2>&1 | tee runner-logs/04-inspection.txt
+
+      - name: Upload reports and runner logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: evrp-dataset-validation-${{ github.run_number }}
-          path: reports/
+          name: evrp-smoke-${{ github.run_number }}
+          path: |
+            reports/
+            runner-logs/
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 90
+
+      - name: Open labelled issue on failure
+        if: failure()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const labels = [
+              {name:"datasets", color:"1D76DB", description:"EVRP dataset acquisition, parsing or validation"},
+              {name:"ci-failure", color:"B60205", description:"Continuous integration failure"},
+              {name:"workflow-failure", color:"D93F0B", description:"GitHub Actions workflow failed"}
+            ];
+            for (const label of labels) {
+              try { await github.rest.issues.getLabel({...context.repo, name:label.name}); }
+              catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+            }
+            const title = `[CI] EVRP smoke tests failed — run ${context.runNumber}`;
+            const open = await github.rest.issues.listForRepo({...context.repo, state:"open", per_page:100});
+            if (!open.data.some(i => i.title === title)) {
+              await github.rest.issues.create({
+                ...context.repo, title,
+                body: `Workflow failed. Review run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\nCommit: ${context.sha}\nDownload the workflow artifact for pytest output, parser logs and reports.`,
+                labels:["datasets","ci-failure","workflow-failure"]
+              });
+            }

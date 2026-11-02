@@ -1,0 +1,22 @@
+﻿2026-11-02T05:05:27.5092346Z ##[group]Run PYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports
+2026-11-02T05:05:27.5092995Z [36;1mPYTHONPATH=src python -m evrp_bench.runner --data data/raw --out reports[0m
+2026-11-02T05:05:27.5123109Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:05:27.5123367Z env:
+2026-11-02T05:05:27.5123636Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.5124075Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:05:27.5124499Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.5125187Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.5125581Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:05:27.5125973Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:05:27.5126296Z ##[endgroup]
+2026-11-02T05:05:27.7184364Z {
+2026-11-02T05:05:27.7185565Z   "files_discovered": 109,
+2026-11-02T05:05:27.7186343Z   "files_available": 109,
+2026-11-02T05:05:27.7186831Z   "sample_mode": false,
+2026-11-02T05:05:27.7187182Z   "passed": 109,
+2026-11-02T05:05:27.7187486Z   "failed": 0,
+2026-11-02T05:05:27.7187796Z   "formats": {
+2026-11-02T05:05:27.7188142Z     "mavrovouniotis_evrp": 17,
+2026-11-02T05:05:27.7188598Z     "schneider_evrptw_tabular": 92
+2026-11-02T05:05:27.7188981Z   }
+2026-11-02T05:05:27.7189237Z }
