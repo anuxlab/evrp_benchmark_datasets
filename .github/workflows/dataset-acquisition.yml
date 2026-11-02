@@ -69,7 +69,8 @@ jobs:
         id: acquire
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MENDELEY_ACCESS_TOKEN: ${{ secrets.MENDELEY_ACCESS_TOKEN }}
+          MENDELEY_CLIENT_ID: ${{ secrets.MENDELEY_CLIENT_ID }}
+          MENDELEY_CLIENT_SECRET: ${{ secrets.MENDELEY_CLIENT_SECRET }}
         run: |
           set -o pipefail
           python scripts/acquire_dataset.py \
