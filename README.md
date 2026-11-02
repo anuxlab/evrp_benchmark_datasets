@@ -19,7 +19,7 @@ The goal is to help researchers and practitioners evaluate algorithms across div
 |---|---:|---|
 | Curated source collections | **15** | Research/official source records with citations and problem-family metadata |
 | Locally integrated datasets | **2** | Actual raw files present in this repository snapshot |
-| Locally available instances | **109** | 17 `.evrp` + 92 EVRPTW `.txt` files |
+| Parser-validated instances | **109** | 17 `.evrp` + 92 EVRPTW `.txt` files |
 | Parser-level passes in supplied runner | **109 / 109** | Structural parsing only; not mathematical feasibility or optimality |
 | Additional source folders | **13** | README, metadata and acquisition/licence instructions; files not yet ingested |
 
@@ -52,9 +52,14 @@ See [Dataset catalogue](DATASET_CATALOG.md) and [Problem taxonomy](docs/PROBLEM_
 │   └── workflows/
 │       ├── dataset-smoke-tests.yml
 │       ├── custom-benchmark-validation.yml
+│       ├── dataset-acquisition.yml
 │       └── pr-validation.yml
+├── acquisition/
+│   ├── sources.json                 # 13 source-specific adapters and licence gates
+│   └── README.md
+├── scripts/acquire_dataset.py       # source download, integrity checks and PR staging
 ├── data/
-│   ├── raw/                         # 15 source folders; 2 currently contain raw files
+│   ├── raw/                         # source folders; only validated acquisitions are committed
 │   ├── registry/evrp_dataset_registry.json
 │   ├── acquisition_status.csv
 │   └── manifest.json
@@ -145,7 +150,20 @@ Open **Actions → Custom EVRP benchmark validation → Run workflow**. The form
 
 A selected dataset with no local files is reported as *catalogued but not ingested*. It is not silently downloaded or counted as tested.
 
-### 3. Pull-request checks
+### 3. Dataset acquisition
+
+`.github/workflows/dataset-acquisition.yml`
+
+Open **Actions → Dataset acquisition → Run workflow** and select one missing collection (`EVRP-003` … `EVRP-015`) per run. The runner uses a source-specific adapter (VRP-REP, Mendeley, Zenodo, Dryad, GitHub, or the DIMACS derived-set specification), downloads to an ephemeral staging directory, checks archive safety and file integrity, and records SHA-256 checksums.
+
+- Licence-cleared sources are copied into their `data/raw/` folder and submitted as a pull request. The workflow never pushes directly to `main`. It runs the repository test suite before opening a PR. To have the generated PR also trigger the normal `pull_request` workflow, optionally configure a fine-grained `GH_PR_TOKEN` secret; otherwise the default `GITHUB_TOKEN` event-suppression rules may prevent that follow-up workflow from firing.
+- Sources with unclear or restrictive redistribution terms are not committed. The runner uploads the report and opens a `licensing-review` issue.
+- Download or validation failures open a detailed `acquisition-failure` issue with source, run, error and artifact references.
+- README integrated-collection counts are updated only after a licence-cleared acquisition passes structural validation. Parser-validated instance counts remain unchanged until a dataset-specific parser passes.
+
+See [acquisition adapters and source-by-source licence policy](acquisition/README.md) and [the acquisition policy](docs/DATASET_ACQUISITION.md).
+
+### 4. Pull-request checks
 
 `pr-validation.yml` runs tests, registry checks and corpus inventory validation for proposed changes. It does not run optimization solvers.
 
@@ -173,4 +191,4 @@ New datasets, format adapters, parameter dictionaries and validation tests are w
 
 ## Scope and roadmap
 
-Current release: catalogue + two locally ingested snapshots + parser/registry validation + configurable CI. Next work: acquire and validate the remaining 13 source families, add dedicated format adapters, implement a canonical typed schema and mathematical consistency checks, then introduce solver adapters and reproducible algorithm benchmarking.
+Current release: catalogue + two parser-validated snapshots + source-specific acquisition workflow + configurable CI. Next work: run the acquisition workflow once per missing source, review each PR/licence issue, add dedicated semantic parsers for each accepted format, implement a canonical typed schema and mathematical consistency checks, then introduce solver adapters and reproducible algorithm benchmarking.

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0 — 2026-11-02
+
+- Added a manually triggered, one-dataset-per-run acquisition workflow for EVRP-003 through EVRP-015.
+- Added source-specific adapters for VRP-REP, DIMACS-derived variants, Mendeley Data, Zenodo, Dryad and GitHub.
+- Added archive path-traversal/symlink checks, expansion/download limits, archive integrity checks, CSV/JSON/XLSX structural checks and SHA-256 inventories.
+- Added a redistribution gate: only explicitly configured CC BY 4.0/CC0 sources can create a pull request; unclear/restricted sources remain runner artifacts and open licensing-review issues.
+- Added automatic PR creation for successful licence-cleared acquisitions; failure and legal-review issues carry source, version, validation and run details.
+- Added registry, acquisition-status CSV, manifest and README count updates after successful acquisition validation only.
+- Separated raw acquisition/schema validation from semantic parser validation; the existing EVRP-001/002 parser corpus remains isolated until additional parsers are implemented.
+- Preserved the latest supplied successful validation and smoke-test reports/logs.
+- Local verification: 18 tests passed; all four workflow YAML files parsed; Python sources compile.
+
 ## 0.3.0 — 2026-11-02
 
 - Expanded the dataset source catalogue to 15 source collections.

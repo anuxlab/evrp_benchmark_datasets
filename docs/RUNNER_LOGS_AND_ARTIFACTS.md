@@ -49,3 +49,14 @@ The reproducibility checks executed while assembling this release are stored und
 - `custom_instance.log`: exact filename selection test (1 passed).
 
 The current generated machine-readable corpus report is under `reports/`.
+
+
+## Latest supplied successful runs (2 November 2026)
+
+The following user-supplied exports are preserved under `artifacts/latest_successful_runs/`:
+
+- Run `41397493333`: custom validation, standard level, all datasets/variants, 109 parser passes.
+- Run `41397615476`: custom validation, strict level, all datasets/variants, 109 parser passes.
+- Latest smoke export: 13 tests passed, registry passed, 109 locally parser-supported files passed.
+
+These exports confirm the existing two parser-enabled corpora. They do not mean that the 13 remaining catalogued sources were downloaded.

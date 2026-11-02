@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evrp-benchmark-lab"
-version = "0.3.1"
+version = "0.4.0"
 description = "Provenance-first EVRP benchmark dataset catalogue, parsers and validation workflows"
 requires-python = ">=3.10"
 dependencies = []

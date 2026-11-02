@@ -69,3 +69,13 @@ PYTHONPATH=src python -m evrp_bench.runner \
 ## 7. Citation requirement
 
 When using this dataset, cite the original dataset and primary paper above. If you also use this curated repository, cite **EVRP Benchmark Datasets** as described in the root `CITATION.cff` and `docs/CITATION_AND_PROVENANCE.md`.
+
+## Automated acquisition
+
+This collection can be selected in the manually triggered GitHub Actions workflow **Dataset acquisition** using `EVRP-014`. The source-specific adapter is `github`.
+
+- Source/version: [main (pin resolved commit)](https://github.com/setyotw/EVDRP_instances)
+- Current redistribution gate: **verified**
+- Automatic repository inclusion: **eligible after the runner re-verifies the source metadata and validation**
+
+A successful download alone does not change the repository's integrated-dataset or validated-instance counts. See [`acquisition/README.md`](../../../acquisition/README.md) for adapter details, validation, issue handling and the source-specific legal gate.

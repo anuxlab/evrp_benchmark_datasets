@@ -33,5 +33,15 @@
   "repository_folder": "data/raw/goeke-schneider-mixed-fleet",
   "local_status": "catalogued_not_yet_ingested",
   "local_instance_count": 0,
-  "acquisition_method": "official_source_link_manual_or_api_review_required"
+  "acquisition_method": "official_source_link_manual_or_api_review_required",
+  "acquisition": {
+    "adapter": "mendeley",
+    "version": "1",
+    "license_gate": "verified",
+    "redistribution_allowed": true,
+    "license_evidence": "Mendeley Data landing page explicitly states CC BY 4.0.",
+    "license_evidence_url": "https://data.mendeley.com/datasets/bd7rm5fw6k/1",
+    "workflow": "dataset-acquisition.yml",
+    "dispatch_dataset_id": "EVRP-005"
+  }
 }

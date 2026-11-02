@@ -45,7 +45,7 @@ def attach_provenance(record, path: Path, root: Path, registry: dict):
 
 
 def select_input_paths(root: Path, sample: bool = False):
-    all_paths=sorted(p for p in root.rglob("*") if p.is_file() and p.suffix.lower() in {".evrp",".txt"} and p.name.lower() not in {"readme.txt","readme.md"})
+    all_paths = parser_input_paths(root)
     if not sample:
         return all_paths
     selected=[]
@@ -75,6 +75,38 @@ DATASET_FOLDER_MAP = {
     "EVRP-015": "electric-shuttle-darp",
 }
 
+# Only these collections currently have semantic instance parsers. New acquisitions
+# remain outside parser-level reports until a dataset-specific parser is implemented.
+PARSER_ENABLED_DATASETS = {"EVRP-001", "EVRP-002"}
+
+def parser_input_paths(root: Path):
+    enabled_folders = {DATASET_FOLDER_MAP[did] for did in PARSER_ENABLED_DATASETS}
+    return sorted(
+        p for p in root.rglob("*")
+        if p.is_file()
+        and p.suffix.lower() in {".evrp", ".txt"}
+        and p.name.lower() not in {"readme.txt", "readme.md"}
+        and any(folder in p.relative_to(root).as_posix() for folder in enabled_folders)
+    )
+
+def local_dataset_ids(root: Path):
+    """Return collections with actual downloaded/raw files, regardless of parser support."""
+    available = set()
+    for did, folder in DATASET_FOLDER_MAP.items():
+        directory = root / folder
+        if not directory.exists():
+            continue
+        raw_files = [
+            p for p in directory.rglob("*")
+            if p.is_file()
+            and p.name.lower() not in {"readme.md", "dataset.json", ".ds_store"}
+            and "_source_archives" not in p.parts
+            and not p.name.endswith(".extracted")
+        ]
+        if raw_files:
+            available.add(did)
+    return available
+
 VARIANT_ALIASES = {
     "EVRP": ("EVRP",),
     "E-CVRP": ("E-CVRP",),
@@ -91,9 +123,7 @@ VARIANT_ALIASES = {
 
 def selected_paths(root: Path, dataset_arg: str, instance_mode: str,
                    instance_names: str, max_instances: int):
-    all_paths = sorted(p for p in root.rglob("*") if p.is_file()
-                       and p.suffix.lower() in {".evrp", ".txt"}
-                       and p.name.lower() not in {"readme.txt", "readme.md"})
+    all_paths = parser_input_paths(root)
     requested = [x.strip() for x in dataset_arg.split(",") if x.strip()]
     if not requested or requested == ["all"]:
         selected_datasets = list(DATASET_FOLDER_MAP)
@@ -160,20 +190,24 @@ def main():
     raw_records=[attach_provenance(inspect_file(p), p, root, registry) for p in paths]
     records=[x for x in raw_records if matches_variant(x, args.problem_variant)]
     selected_set=set(selected_datasets)
-    available_datasets = sorted({
+    available_datasets = local_dataset_ids(root)
+    parser_datasets = {
         did for did, folder in DATASET_FOLDER_MAP.items()
         if any(folder in p.relative_to(root).as_posix() for p in all_paths)
-    })
-    missing_datasets=sorted(selected_set-set(available_datasets))
+    }
+    missing_datasets=sorted(selected_set-available_datasets)
     summary={
         "files_discovered":len(records),
         "files_available_in_selected_datasets":len(paths),
         "files_available_in_all_local_corpus":len(all_paths),
+        "parser_supported_local_files":len(all_paths),
         "sample_mode":mode=="representative",
         "instance_mode":mode,
         "selected_datasets":selected_datasets,
-        "datasets_with_local_files":sorted(selected_set & set(available_datasets)),
+        "datasets_with_local_files":sorted(selected_set & available_datasets),
+        "datasets_with_parser_supported_files":sorted(selected_set & parser_datasets),
         "selected_datasets_without_local_files":missing_datasets,
+        "selected_datasets_without_parser_support":sorted((selected_set & available_datasets)-parser_datasets),
         "problem_variant":args.problem_variant,
         "max_instances":args.max_instances,
         "passed":sum(x["validation"]["status"]=="passed" for x in records),

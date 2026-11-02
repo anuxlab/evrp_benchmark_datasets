@@ -1,0 +1,105 @@
+{
+  "version": "0.4.0",
+  "tests": "18 passed",
+  "parser_preflight": {
+    "files_discovered": 109,
+    "files_available_in_selected_datasets": 109,
+    "files_available_in_all_local_corpus": 109,
+    "parser_supported_local_files": 109,
+    "sample_mode": false,
+    "instance_mode": "all",
+    "selected_datasets": [
+      "EVRP-001",
+      "EVRP-002",
+      "EVRP-003",
+      "EVRP-004",
+      "EVRP-005",
+      "EVRP-006",
+      "EVRP-007",
+      "EVRP-008",
+      "EVRP-009",
+      "EVRP-010",
+      "EVRP-011",
+      "EVRP-012",
+      "EVRP-013",
+      "EVRP-014",
+      "EVRP-015"
+    ],
+    "datasets_with_local_files": [
+      "EVRP-001",
+      "EVRP-002"
+    ],
+    "datasets_with_parser_supported_files": [
+      "EVRP-001",
+      "EVRP-002"
+    ],
+    "selected_datasets_without_local_files": [
+      "EVRP-003",
+      "EVRP-004",
+      "EVRP-005",
+      "EVRP-006",
+      "EVRP-007",
+      "EVRP-008",
+      "EVRP-009",
+      "EVRP-010",
+      "EVRP-011",
+      "EVRP-012",
+      "EVRP-013",
+      "EVRP-014",
+      "EVRP-015"
+    ],
+    "selected_datasets_without_parser_support": [],
+    "problem_variant": "all",
+    "max_instances": 0,
+    "passed": 109,
+    "failed": 0,
+    "formats": {
+      "mavrovouniotis_evrp": 17,
+      "schneider_evrptw_tabular": 92
+    },
+    "filtered_out_by_problem_variant": 0
+  },
+  "registry_errors": [],
+  "workflow_yamls": [
+    "custom-benchmark-validation.yml: PASS",
+    "dataset-acquisition.yml: PASS",
+    "dataset-smoke-tests.yml: PASS",
+    "pr-validation.yml: PASS"
+  ],
+  "acquisition_targets": [
+    "EVRP-003",
+    "EVRP-004",
+    "EVRP-005",
+    "EVRP-006",
+    "EVRP-007",
+    "EVRP-008",
+    "EVRP-009",
+    "EVRP-010",
+    "EVRP-011",
+    "EVRP-012",
+    "EVRP-013",
+    "EVRP-014",
+    "EVRP-015"
+  ],
+  "redistribution_eligible": [
+    "EVRP-005",
+    "EVRP-008",
+    "EVRP-009",
+    "EVRP-010",
+    "EVRP-012",
+    "EVRP-014"
+  ],
+  "manual_review": [
+    "EVRP-003",
+    "EVRP-004",
+    "EVRP-006",
+    "EVRP-007",
+    "EVRP-011",
+    "EVRP-013",
+    "EVRP-015"
+  ],
+  "raw_local_files_currently": 109,
+  "raw_local_datasets_currently": 2,
+  "remote_workflow_execution": false,
+  "remote_push": false
+}

@@ -31,5 +31,15 @@
   "repository_folder": "data/raw/felipe-multiple-technologies",
   "local_status": "catalogued_not_yet_ingested",
   "local_instance_count": 0,
-  "acquisition_method": "official_source_link_manual_or_api_review_required"
+  "acquisition_method": "official_source_link_manual_or_api_review_required",
+  "acquisition": {
+    "adapter": "vrp_rep",
+    "version": "VRP-REP ID 2018-0004",
+    "license_gate": "manual_review",
+    "redistribution_allowed": false,
+    "license_evidence": "VRP-REP marks the listing public, but source terms do not establish a redistribution licence.",
+    "license_evidence_url": "https://www.vrp-rep.org/datasets/item/2018-0004.html",
+    "workflow": "dataset-acquisition.yml",
+    "dispatch_dataset_id": "EVRP-006"
+  }
 }

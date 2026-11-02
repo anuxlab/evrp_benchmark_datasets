@@ -26,7 +26,7 @@ def validate_registry(registry: dict) -> list[str]:
                 errors.append(f"{did}: unknown related citation id {cid}")
         if not ds.get("problem_families"):
             errors.append(f"{did}: problem_families must not be empty")
-        if ds.get("local_status") not in {"locally_ingested_and_parser_validated", "catalogued_not_yet_ingested"}:
+        if ds.get("local_status") not in {"locally_ingested_and_parser_validated", "acquired_and_schema_validated", "catalogued_not_yet_ingested"}:
             errors.append(f"{did}: invalid local_status")
         if not isinstance(ds.get("local_instance_count"), int) or ds.get("local_instance_count") < 0:
             errors.append(f"{did}: local_instance_count must be a non-negative integer")

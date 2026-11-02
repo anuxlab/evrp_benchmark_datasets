@@ -36,5 +36,15 @@
   "repository_folder": "data/raw/akbay-two-echelon",
   "local_status": "catalogued_not_yet_ingested",
   "local_instance_count": 0,
-  "acquisition_method": "official_source_link_manual_or_api_review_required"
+  "acquisition_method": "official_source_link_manual_or_api_review_required",
+  "acquisition": {
+    "adapter": "zenodo",
+    "version": "v2",
+    "license_gate": "manual_review",
+    "redistribution_allowed": false,
+    "license_evidence": "Zenodo landing page identifies the resource as Software Open; exact record/archive licence must be confirmed from API metadata before redistribution.",
+    "license_evidence_url": "https://zenodo.org/records/14844216",
+    "workflow": "dataset-acquisition.yml",
+    "dispatch_dataset_id": "EVRP-007"
+  }
 }

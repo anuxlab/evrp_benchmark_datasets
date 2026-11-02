@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0",
+  "policy": {
+    "download_to_runner_staging": true,
+    "commit_only_when_redistribution_explicitly_verified": true,
+    "create_pull_request_not_direct_push": true,
+    "manual_review_sources_are_never_committed": true
+  },
+  "sources": {
+    "EVRP-003": {
+      "adapter": "vrp_rep",
+      "source_id": "2016-0020",
+      "version": "VRP-REP ID 2016-0020",
+      "license_gate": "manual_review",
+      "license_evidence": "VRP-REP marks the listing public, but the instance-level redistribution licence is not explicit in the source metadata.",
+      "redistribute": false,
+      "expected_count": 120,
+      "count_method": "instance_files",
+      "dataset_id": "EVRP-003",
+      "name": "Montoya et al. nonlinear charging benchmark",
+      "source_url": "https://www.vrp-rep.org/datasets/item/2016-0020.html",
+      "destination": "data/raw/montoya-nonlinear-charging",
+      "problem_families": [
+        "E-VRP-NL"
+      ],
+      "license_evidence_url": "https://www.vrp-rep.org/datasets/item/2016-0020.html"
+    },
+    "EVRP-004": {
+      "adapter": "dimacs_derived",
+      "source_id": "2016-0020",
+      "version": "DIMACS E-VRP-NL-C challenge specification",
+      "license_gate": "manual_review",
+      "license_evidence": "Derived capacity variants inherit source terms; no separate redistribution grant verified.",
+      "redistribute": false,
+      "expected_count": 240,
+      "count_method": "derived_instances_not_source_files",
+      "parent": "EVRP-003",
+      "dataset_id": "EVRP-004",
+      "name": "Froger capacitated charging-station variants",
+      "source_url": "https://dimacs.rutgers.edu/programs/implementation-challenges/vehicle-routing/implementation-challenge-vehicle-routing/electric-vehicle-routing-problem",
+      "destination": "data/raw/froger-capacitated-stations",
+      "problem_families": [
+        "E-VRP-NL-C",
+        "capacitated charging stations"
+      ],
+      "license_evidence_url": "https://dimacs.rutgers.edu/programs/implementation-challenges/vehicle-routing/implementation-challenge-vehicle-routing/electric-vehicle-routing-problem"
+    },
+    "EVRP-005": {
+      "adapter": "mendeley",
+      "source_id": "bd7rm5fw6k",
+      "version": "1",
+      "version_url": "https://data.mendeley.com/datasets/bd7rm5fw6k/1",
+      "license_gate": "verified",
+      "license_spdx": "CC-BY-4.0",
+      "license_evidence": "Mendeley Data landing page explicitly states CC BY 4.0.",
+      "redistribute": true,
+      "expected_count": null,
+      "count_method": "unknown_until_domain_parser",
+      "dataset_id": "EVRP-005",
+      "name": "Goeke-Schneider mixed-fleet EVRPTW-MF",
+      "source_url": "https://data.mendeley.com/datasets/bd7rm5fw6k/1",
+      "destination": "data/raw/goeke-schneider-mixed-fleet",
+      "problem_families": [
+        "EVRPTW-MF",
+        "mixed electric/ICE fleet"
+      ],
+      "license_evidence_url": "https://data.mendeley.com/datasets/bd7rm5fw6k/1"
+    },
+    "EVRP-006": {
+      "adapter": "vrp_rep",
+      "source_id": "2018-0004",
+      "version": "VRP-REP ID 2018-0004",
+      "license_gate": "manual_review",
+      "license_evidence": "VRP-REP marks the listing public, but source terms do not establish a redistribution licence.",
+      "redistribute": false,
+      "expected_count": 41,
+      "count_method": "instance_files",
+      "dataset_id": "EVRP-006",
+      "name": "Felipe et al. GVRP multiple technologies and partial recharges",
+      "source_url": "https://www.vrp-rep.org/datasets/item/2018-0004.html",
+      "destination": "data/raw/felipe-multiple-technologies",
+      "problem_families": [
+        "GVRP-MTPR",
+        "multiple charging technologies",
+        "partial recharge"
+      ],
+      "license_evidence_url": "https://www.vrp-rep.org/datasets/item/2018-0004.html"
+    },
+    "EVRP-007": {
+      "adapter": "zenodo",
+      "source_id": "14844216",
+      "version": "v2",
+      "version_url": "https://zenodo.org/records/14844216",
+      "license_gate": "manual_review",
+      "license_evidence": "Zenodo landing page identifies the resource as Software Open; exact record/archive licence must be confirmed from API metadata before redistribution.",
+      "redistribute": false,
+      "expected_count": 3000,
+      "count_method": "instance_files",
+      "dataset_id": "EVRP-007",
+      "name": "Akbay et al. expanded two-echelon EVRP dataset",
+      "source_url": "https://zenodo.org/records/14844216",
+      "destination": "data/raw/akbay-two-echelon",
+      "problem_families": [
+        "2E-EVRP",
+        "2E-EVRPTW",
+        "SPD",
+        "partial delivery"
+      ],
+      "license_evidence_url": "https://zenodo.org/records/14844216"
+    },
+    "EVRP-008": {
+      "adapter": "mendeley",
+      "source_id": "dmnhggw478",
+      "version": "1",
+      "version_url": "https://data.mendeley.com/datasets/dmnhggw478/1",
+      "license_gate": "verified",
+      "license_spdx": "CC-BY-4.0",
+      "license_evidence": "Mendeley Data landing page explicitly states CC BY 4.0.",
+      "redistribute": true,
+      "expected_count": null,
+      "count_method": "unknown_until_domain_parser",
+      "dataset_id": "EVRP-008",
+      "name": "V2G and dynamic energy pricing extended EVRPTW",
+      "source_url": "https://data.mendeley.com/datasets/dmnhggw478/1",
+      "destination": "data/raw/v2g-dynamic-pricing",
+      "problem_families": [
+        "EVRPTW-V2G",
+        "time-of-use energy pricing"
+      ],
+      "license_evidence_url": "https://data.mendeley.com/datasets/dmnhggw478/1"
+    },
+    "EVRP-009": {
+      "adapter": "mendeley",
+      "source_id": "srfdbp2twv",
+      "version": "1",
+      "version_url": "https://data.mendeley.com/datasets/srfdbp2twv/1",
+      "license_gate": "verified",
+      "license_spdx": "CC-BY-4.0",
+      "license_evidence": "Mendeley Data landing page explicitly states CC BY 4.0.",
+      "redistribute": true,
+      "expected_count": null,
+      "count_method": "unknown_until_domain_parser",
+      "dataset_id": "EVRP-009",
+      "name": "Gradient-aware EVRPTW with altitude information",
+      "source_url": "https://data.mendeley.com/datasets/srfdbp2twv/1",
+      "destination": "data/raw/gradient-aware-evrptw",
+      "problem_families": [
+        "EVRPTW-GR",
+        "gradient/load-dependent energy",
+        "regenerative braking"
+      ],
+      "license_evidence_url": "https://data.mendeley.com/datasets/srfdbp2twv/1"
+    },
+    "EVRP-010": {
+      "adapter": "mendeley",
+      "source_id": "4ktbt29z5x",
+      "version": "1",
+      "version_url": "https://data.mendeley.com/datasets/4ktbt29z5x/1",
+      "license_gate": "verified",
+      "license_spdx": "CC-BY-4.0",
+      "license_evidence": "Mendeley Data landing page explicitly states CC BY 4.0.",
+      "redistribute": true,
+      "expected_count": 3,
+      "count_method": "configurations_not_instance_files",
+      "dataset_id": "EVRP-010",
+      "name": "Charging-station energy differences",
+      "source_url": "https://data.mendeley.com/datasets/4ktbt29z5x/1",
+      "destination": "data/raw/charging-station-energy-differences",
+      "problem_families": [
+        "EVRP heterogeneous station energy"
+      ],
+      "license_evidence_url": "https://data.mendeley.com/datasets/4ktbt29z5x/1"
+    },
+    "EVRP-011": {
+      "adapter": "dryad",
+      "source_id": "10.5061/dryad.6hdr7srbv",
+      "version": "2025-07-02",
+      "version_url": "https://datadryad.org/dataset/doi:10.5061/dryad.6hdr7srbv",
+      "license_gate": "manual_review",
+      "license_evidence": "Dryad record metadata must be checked for the actual version licence and any file-level restrictions.",
+      "redistribute": false,
+      "expected_count": 60,
+      "count_method": "instance_files",
+      "dataset_id": "EVRP-011",
+      "name": "EVRP with backhauls and time windows under uncertainty (EVRPBTW-USUT)",
+      "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.6hdr7srbv",
+      "destination": "data/raw/evrp-backhauls-uncertainty",
+      "problem_families": [
+        "EVRPBTW-USUT",
+        "backhauls",
+        "time windows",
+        "uncertain travel/service times"
+      ],
+      "license_evidence_url": "https://datadryad.org/dataset/doi:10.5061/dryad.6hdr7srbv"
+    },
+    "EVRP-012": {
+      "adapter": "mendeley",
+      "source_id": "np452gmj7f",
+      "version": "2",
+      "version_url": "https://data.mendeley.com/datasets/np452gmj7f/2",
+      "license_gate": "verified",
+      "license_spdx": "CC-BY-4.0",
+      "license_evidence": "Mendeley Data landing page explicitly states CC BY 4.0.",
+      "redistribute": true,
+      "expected_count": null,
+      "count_method": "unknown_until_domain_parser",
+      "dataset_id": "EVRP-012",
+      "name": "Mixed-fleet VRP with low-emission zones (EVRPTW-derived + Milan case)",
+      "source_url": "https://data.mendeley.com/datasets/np452gmj7f/2",
+      "destination": "data/raw/low-emission-zones-mixed-fleet",
+      "problem_families": [
+        "mixed-fleet EVRP",
+        "low-emission-zone routing",
+        "real-road case study"
+      ],
+      "license_evidence_url": "https://data.mendeley.com/datasets/np452gmj7f/2"
+    },
+    "EVRP-013": {
+      "adapter": "github",
+      "source_id": "claudiabongiovanni/eADARP",
+      "version": "main (pin resolved commit)",
+      "version_url": "https://github.com/claudiabongiovanni/eADARP",
+      "license_gate": "manual_review",
+      "license_evidence": "Repository listing contains README and archive but no visible LICENSE file; no redistribution permission verified.",
+      "redistribute": false,
+      "expected_count": null,
+      "count_method": "unknown_until_domain_parser",
+      "dataset_id": "EVRP-013",
+      "name": "Electric autonomous dial-a-ride benchmark (adjacent family)",
+      "source_url": "https://github.com/claudiabongiovanni/eADARP",
+      "destination": "data/raw/electric-dial-a-ride",
+      "problem_families": [
+        "eADARP",
+        "electric dial-a-ride",
+        "ride-pooling"
+      ],
+      "license_evidence_url": "https://github.com/claudiabongiovanni/eADARP"
+    },
+    "EVRP-014": {
+      "adapter": "github",
+      "source_id": "setyotw/EVDRP_instances",
+      "version": "main (pin resolved commit)",
+      "version_url": "https://github.com/setyotw/EVDRP_instances",
+      "license_gate": "verified",
+      "license_spdx": "CC0-1.0",
+      "license_evidence": "Upstream repository explicitly declares CC0-1.0.",
+      "redistribute": true,
+      "expected_count": 128,
+      "count_method": "unknown_until_domain_parser",
+      "dataset_id": "EVRP-014",
+      "name": "Electric vehicle-drone routing instances (adjacent family)",
+      "source_url": "https://github.com/setyotw/EVDRP_instances",
+      "destination": "data/raw/electric-vehicle-drone-routing",
+      "problem_families": [
+        "EV-drone routing",
+        "synchronised truck-drone routing"
+      ],
+      "license_evidence_url": "https://github.com/setyotw/EVDRP_instances"
+    },
+    "EVRP-015": {
+      "adapter": "zenodo",
+      "source_id": "23468137",
+      "version": "v1",
+      "version_url": "https://zenodo.org/records/23468137",
+      "license_gate": "manual_review",
+      "license_evidence": "Zenodo record rights/licence field was not explicit in the surfaced record; verify exact API metadata before redistribution.",
+      "redistribute": false,
+      "expected_count": null,
+      "count_method": "unknown_until_domain_parser",
+      "dataset_id": "EVRP-015",
+      "name": "EM-DARP electric shuttle demand-responsive routing dataset (adjacent family)",
+      "source_url": "https://zenodo.org/records/23468137",
+      "destination": "data/raw/electric-shuttle-darp",
+      "problem_families": [
+        "electric mobility DARP",
+        "electric shuttle routing",
+        "demand-responsive transport"
+      ],
+      "license_evidence_url": "https://zenodo.org/records/23468137"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.17, pytest-9.2.0, pluggy-1.7.0 -- /opt/hostedtoolcache/Python/3.11.17/x64/bin/python
+cachedir: .pytest_cache
+rootdir: /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets
+configfile: pyproject.toml
+collecting ... collected 13 items
+
+tests/test_corpus_inventory.py::test_uploaded_corpus_inventory PASSED    [  7%]
+tests/test_corpus_inventory.py::test_all_local_instances_resolve_to_registered_dataset PASSED [ 15%]
+tests/test_corpus_inventory.py::test_sample_mode_selects_two_examples_per_format PASSED [ 23%]
+tests/test_dataset_folders.py::test_every_registered_dataset_has_folder_readme_and_card PASSED [ 30%]
+tests/test_dataset_folders.py::test_catalogue_and_local_integration_counts_are_distinct PASSED [ 38%]
+tests/test_parsers.py::test_uploaded_evrp_sample PASSED                  [ 46%]
+tests/test_parsers.py::test_uploaded_evrptw_sample PASSED                [ 53%]
+tests/test_registry.py::test_registry_has_traceable_publication_links PASSED [ 61%]
+tests/test_registry.py::test_every_dataset_has_citation_or_explicitly_no_publication PASSED [ 69%]
+tests/test_runner_selection.py::test_dataset_selection_returns_only_selected_dataset PASSED [ 76%]
+tests/test_runner_selection.py::test_representative_mode_is_two_per_local_dataset PASSED [ 84%]
+tests/test_runner_selection.py::test_custom_instance_selection PASSED    [ 92%]
+tests/test_runner_selection.py::test_problem_variant_filter_uses_compatibility PASSED [100%]
+
+============================== 13 passed in 0.07s ==============================

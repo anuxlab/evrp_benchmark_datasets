@@ -16,7 +16,8 @@ def test_all_local_instances_resolve_to_registered_dataset():
     from evrp_bench.registry import load_registry
     registry = load_registry(ROOT / "data/registry/evrp_dataset_registry.json")
     raw = ROOT / "data/raw"
-    paths = [p for p in raw.rglob("*") if p.is_file() and p.suffix.lower() in {".evrp", ".txt"} and p.name.lower() != "readme.txt"]
+    from evrp_bench.runner import parser_input_paths
+    paths = parser_input_paths(raw)
     for path in paths:
         rec = attach_provenance(inspect_file(path), path, raw, registry)
         assert rec["provenance"]["dataset_id"] in {"EVRP-001", "EVRP-002"}

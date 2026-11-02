@@ -1,0 +1,230 @@
+name: Dataset acquisition
+
+on:
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: "Acquire exactly one missing dataset collection per run"
+        required: true
+        type: choice
+        options:
+          - EVRP-003
+          - EVRP-004
+          - EVRP-005
+          - EVRP-006
+          - EVRP-007
+          - EVRP-008
+          - EVRP-009
+          - EVRP-010
+          - EVRP-011
+          - EVRP-012
+          - EVRP-013
+          - EVRP-014
+          - EVRP-015
+      confirm_source_terms:
+        description: "I understand that restricted/unclear sources will not be committed"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: dataset-acquisition-${{ inputs.dataset }}
+  cancel-in-progress: false
+
+jobs:
+  acquire:
+    name: Acquire ${{ inputs.dataset }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Record run context
+        run: |
+          mkdir -p acquisition-staging runner-logs
+          {
+            echo "Run: $GITHUB_RUN_ID"
+            echo "Commit: $GITHUB_SHA"
+            echo "Dataset: ${{ inputs.dataset }}"
+            echo "Runner: $RUNNER_OS / $RUNNER_ARCH"
+            python --version
+            df -h .
+          } | tee runner-logs/acquisition-context.txt
+
+      - name: Acquire and validate source
+        id: acquire
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MENDELEY_ACCESS_TOKEN: ${{ secrets.MENDELEY_ACCESS_TOKEN }}
+        run: |
+          set -o pipefail
+          python scripts/acquire_dataset.py \
+            --dataset "${{ inputs.dataset }}" \
+            --staging acquisition-staging \
+            2>&1 | tee runner-logs/acquisition-${{ inputs.dataset }}.log
+
+      - name: Install test dependencies and validate repository state
+        id: tests
+        if: steps.acquire.outcome == 'success'
+        run: |
+          python -m pip install -e ".[test]"
+          PYTHONPATH=src python -m pytest -q 2>&1 | tee runner-logs/post-acquisition-tests.txt
+
+      - name: Upload acquisition report and logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: acquisition-${{ inputs.dataset }}-${{ github.run_number }}
+          path: |
+            acquisition-staging/${{ inputs.dataset }}/
+            runner-logs/
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Ensure acquisition labels exist
+        if: always()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const labels = [
+              {name:"datasets", color:"1D76DB", description:"EVRP dataset collection and provenance"},
+              {name:"dataset-acquisition", color:"5319E7", description:"Automated dataset acquisition"},
+              {name:"licence-reviewed", color:"0E8A16", description:"Source redistribution licence reviewed"},
+              {name:"acquisition-failure", color:"B60205", description:"Dataset source download or validation failed"},
+              {name:"licensing-review", color:"FBCA04", description:"Redistribution terms need maintainer review"},
+              {name:"needs-maintainer", color:"D876E3", description:"Requires a maintainer decision"}
+            ];
+            for (const label of labels) {
+              try { await github.rest.issues.getLabel({...context.repo, name:label.name}); }
+              catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+            }
+
+      - name: Create pull request for licence-cleared dataset
+        id: create_pr
+        if: steps.acquire.outcome == 'success' && steps.tests.outcome == 'success' && steps.acquire.outputs.commit_allowed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GH_PR_TOKEN || secrets.GITHUB_TOKEN }}
+          branch: dataset-acquisition/${{ inputs.dataset }}-${{ github.run_id }}
+          delete-branch: true
+          commit-message: "data: acquire and validate ${{ inputs.dataset }}"
+          title: "data: acquire and validate ${{ inputs.dataset }}"
+          body: |
+            ## Dataset acquisition
+
+            - Dataset: `${{ inputs.dataset }}`
+            - Source: see the dataset-specific acquisition record and `acquisition/sources.json`
+            - Acquisition and archive/file integrity validation completed in [run ${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+            - Redistribution gate passed according to the source-specific licence evidence.
+            - Raw files, checksums, registry metadata and README integration counts are included.
+
+            Please review the source citation, licence evidence, file inventory and checksums before merging.
+          add-paths: |
+            data/raw/**
+            data/registry/evrp_dataset_registry.json
+            data/acquisition_status.csv
+            data/manifest.json
+            README.md
+          labels: |
+            datasets
+            dataset-acquisition
+            licence-reviewed
+          draft: false
+
+      - name: Open detailed issue for acquisition failure or manual rights review
+        if: always() && (steps.acquire.outcome == 'failure' || steps.tests.outcome == 'failure' || (steps.acquire.outcome == 'success' && steps.acquire.outputs.commit_allowed != 'true') || steps.create_pr.outcome == 'failure')
+        uses: actions/github-script@v8
+        env:
+          DATASET_ID: ${{ inputs.dataset }}
+          ACQUIRE_OUTCOME: ${{ steps.acquire.outputs.outcome || steps.acquire.outcome }}
+          COMMIT_ALLOWED: ${{ steps.acquire.outputs.commit_allowed || 'false' }}
+          PR_OUTCOME: ${{ steps.create_pr.outcome || 'skipped' }}
+          TEST_OUTCOME: ${{ steps.tests.outcome || 'skipped' }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = `acquisition-staging/${process.env.DATASET_ID}/acquisition_report.json`;
+            let report = {};
+            try { report = JSON.parse(fs.readFileSync(path, 'utf8')); }
+            catch (e) { report = { report_read_error: String(e) }; }
+
+            const labels = [
+              {name:"datasets", color:"1D76DB", description:"EVRP dataset collection and provenance"},
+              {name:"dataset-acquisition", color:"5319E7", description:"Automated dataset acquisition"},
+              {name:"acquisition-failure", color:"B60205", description:"Dataset source download or validation failed"},
+              {name:"licensing-review", color:"FBCA04", description:"Redistribution terms need maintainer review"},
+              {name:"needs-maintainer", color:"D876E3", description:"Requires a maintainer decision"}
+            ];
+            for (const label of labels) {
+              try { await github.rest.issues.getLabel({...context.repo, name:label.name}); }
+              catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+            }
+
+            const failed = process.env.ACQUIRE_OUTCOME === "failure" ||
+                           process.env.PR_OUTCOME === "failure" ||
+                           process.env.TEST_OUTCOME === "failure" ||
+                           report.outcome === "acquisition_failed" ||
+                           report.outcome === "validation_failed";
+            const title = failed
+              ? `[DATASET] ${process.env.DATASET_ID} acquisition/validation failed — run ${context.runNumber}`
+              : `[LICENCE REVIEW] ${process.env.DATASET_ID} requires redistribution decision — run ${context.runNumber}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const validation = report.validation || {};
+            const body = [
+              `## Acquisition result`,
+              ``,
+              `- Dataset: \`${process.env.DATASET_ID}\``,
+              `- Outcome: \`${report.outcome || process.env.ACQUIRE_OUTCOME}\``,
+              `- Source: ${report.source_url || "See acquisition/sources.json"}`,
+              `- Version: ${report.version || "not resolved"}`,
+              `- Licence gate: \`${report.license_gate || "manual_review"}\``,
+              `- Redistribution permitted by current policy: \`${report.redistribution_allowed === true}\``,
+              `- Files discovered: \`${validation.recognized_data_files ?? "unknown"}\``,
+              `- Validation: \`${validation.status || "not completed"}\``,
+              ``,
+              `### Licence/provenance evidence`,
+              report.license_evidence || "No licence evidence could be extracted. Do not commit source files until terms are verified.",
+              report.license_evidence_url ? `Evidence record: ${report.license_evidence_url}` : "",
+              report.adapter_metadata?.api_license_metadata ? `\nAPI licence metadata: \`${JSON.stringify(report.adapter_metadata.api_license_metadata)}\`` : "",
+              ``,
+              `### Failure details`,
+              report.error || (validation.errors || []).join("\n") ||
+              (process.env.TEST_OUTCOME === "failure" ? "Acquisition succeeded, but the post-acquisition repository test suite failed. Review runner-logs/post-acquisition-tests.txt; no pull request was opened." :
+              process.env.PR_OUTCOME === "failure" ? "The dataset passed acquisition and repository tests, but the pull-request creation step failed. Check repository Actions permissions for pull requests and contents." :
+              "Acquisition succeeded, but automatic redistribution is not permitted until a maintainer confirms the source terms."),
+              ``,
+              `### Required next action`,
+              failed
+                ? "Inspect the run logs and acquisition artifact, correct the source adapter or parser, then rerun this dataset."
+                : "Review the original source licence and file-level terms. If redistribution is explicitly permitted, update acquisition/sources.json with the evidence and rerun. Otherwise keep the data out of data/raw and document the manual access route.",
+              ``,
+              `Run and artifacts: ${runUrl}`,
+              ``,
+              `This issue was generated automatically; no README integration or instance counts are increased for an unapproved or failed acquisition.`
+            ].join("\n");
+
+            const open = await github.rest.issues.listForRepo({...context.repo, state:"open", per_page:100});
+            if (!open.data.some(i => i.title === title)) {
+              await github.rest.issues.create({
+                ...context.repo,
+                title,
+                body,
+                labels: failed
+                  ? ["datasets","dataset-acquisition","acquisition-failure","needs-maintainer"]
+                  : ["datasets","dataset-acquisition","licensing-review","needs-maintainer"]
+              });
+            }
