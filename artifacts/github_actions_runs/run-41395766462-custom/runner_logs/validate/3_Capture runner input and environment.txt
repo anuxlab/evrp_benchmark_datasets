@@ -1,0 +1,45 @@
+﻿2026-11-02T05:44:32.7445417Z ##[group]Run {
+2026-11-02T05:44:32.7446063Z [36;1m{[0m
+2026-11-02T05:44:32.7446568Z [36;1m  echo "Run ID: $GITHUB_RUN_ID"[0m
+2026-11-02T05:44:32.7447277Z [36;1m  echo "Run number: $GITHUB_RUN_NUMBER"[0m
+2026-11-02T05:44:32.7447959Z [36;1m  echo "Commit: $GITHUB_SHA"[0m
+2026-11-02T05:44:32.7448617Z [36;1m  echo "Runner: $RUNNER_OS / $RUNNER_ARCH"[0m
+2026-11-02T05:44:32.7449274Z [36;1m  echo "Dataset: all"[0m
+2026-11-02T05:44:32.7449868Z [36;1m  echo "Problem variant: all"[0m
+2026-11-02T05:44:32.7450517Z [36;1m  echo "Instance mode: all"[0m
+2026-11-02T05:44:32.7451313Z [36;1m  echo "Instance names: "[0m
+2026-11-02T05:44:32.7451949Z [36;1m  echo "Max instances: 0"[0m
+2026-11-02T05:44:32.7452587Z [36;1m  echo "Validation level: strict"[0m
+2026-11-02T05:44:32.7453234Z [36;1m  echo "Fail on empty: false"[0m
+2026-11-02T05:44:32.7453856Z [36;1m  python --version || true[0m
+2026-11-02T05:44:32.7454464Z [36;1m  uname -a[0m
+2026-11-02T05:44:32.7454951Z [36;1m  df -h[0m
+2026-11-02T05:44:32.7455542Z [36;1m} | tee runner-logs/00-run-context.txt[0m
+2026-11-02T05:44:32.7487225Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:32.7487811Z ##[endgroup]
+2026-11-02T05:44:32.7594553Z Run ID: 41395766462
+2026-11-02T05:44:32.7595687Z Run number: 1
+2026-11-02T05:44:32.7596704Z Commit: e2b989fa15041085f7a401408e16c5ea795057a7
+2026-11-02T05:44:32.7597514Z Runner: Linux / X64
+2026-11-02T05:44:32.7598033Z Dataset: all
+2026-11-02T05:44:32.7598527Z Problem variant: all
+2026-11-02T05:44:32.7599199Z Instance mode: all
+2026-11-02T05:44:32.7600217Z Instance names: 
+2026-11-02T05:44:32.7600709Z Max instances: 0
+2026-11-02T05:44:32.7601761Z Validation level: strict
+2026-11-02T05:44:32.7602348Z Fail on empty: false
+2026-11-02T05:44:32.7602849Z Python 3.14.4
+2026-11-02T05:44:32.7603716Z Linux runnervmnwato 7.0.0-1017-azure #17-Ubuntu SMP PREEMPT Thu Sep 24 15:54:51 UTC 2026 x86_64 GNU/Linux
+2026-11-02T05:44:32.7706247Z Filesystem      Size  Used Avail Use% Mounted on
+2026-11-02T05:44:32.7707760Z /dev/root       145G   57G   88G  40% /
+2026-11-02T05:44:32.7708985Z tmpfs           7.9G     0  7.9G   0% /dev/shm
+2026-11-02T05:44:32.7709703Z tmpfs           3.2G  1.1M  3.2G   1% /run
+2026-11-02T05:44:32.7710465Z efivarfs        128M   32K  128M   1% /sys/firmware/efi/efivars
+2026-11-02T05:44:32.7711686Z none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+2026-11-02T05:44:32.7712646Z none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+2026-11-02T05:44:32.7713446Z /dev/sda13      989M   84M  838M  10% /boot
+2026-11-02T05:44:32.7714155Z /dev/sda15      105M  6.3M   99M   7% /boot/efi
+2026-11-02T05:44:32.7714939Z none            1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+2026-11-02T05:44:32.7715826Z tmpfs           1.6G  8.0K  1.6G   1% /run/user/1001
+2026-11-02T05:44:32.7717463Z none            1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+2026-11-02T05:44:32.7718985Z none            1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service

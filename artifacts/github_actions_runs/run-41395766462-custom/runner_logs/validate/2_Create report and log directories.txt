@@ -1,0 +1,4 @@
+﻿2026-11-02T05:44:32.7078085Z ##[group]Run mkdir -p reports runner-logs
+2026-11-02T05:44:32.7078943Z [36;1mmkdir -p reports runner-logs[0m
+2026-11-02T05:44:32.7113333Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:32.7114244Z ##[endgroup]

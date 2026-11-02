@@ -1,0 +1,33 @@
+﻿2026-11-02T05:44:02.3005655Z ##[group]Run set -o pipefail
+2026-11-02T05:44:02.3006010Z [36;1mset -o pipefail[0m
+2026-11-02T05:44:02.3006441Z [36;1mpython -m pip install --upgrade pip pytest 2>&1 | tee runner-logs/01-install.txt[0m
+2026-11-02T05:44:02.3040460Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:02.3040754Z env:
+2026-11-02T05:44:02.3041042Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:02.3041534Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:02.3041977Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:02.3042392Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:02.3042797Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:02.3043195Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:02.3043527Z ##[endgroup]
+2026-11-02T05:44:02.3127590Z runner-logs/01-install.txt: No such file or directory (os error 2)
+2026-11-02T05:44:03.1638802Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages (26.2.2)
+2026-11-02T05:44:03.2815984Z Collecting pytest
+2026-11-02T05:44:03.2834922Z   Using cached pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+2026-11-02T05:44:03.3101888Z Collecting iniconfig>=2 (from pytest)
+2026-11-02T05:44:03.3117738Z   Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-11-02T05:44:03.3336302Z Collecting packaging>=24 (from pytest)
+2026-11-02T05:44:03.3361203Z   Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-11-02T05:44:03.3571946Z Collecting pluggy<2,>=1.6 (from pytest)
+2026-11-02T05:44:03.3586796Z   Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+2026-11-02T05:44:03.3828857Z Collecting pygments>=2.15 (from pytest)
+2026-11-02T05:44:03.3843460Z   Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-11-02T05:44:03.3882051Z Using cached pytest-9.2.0-py3-none-any.whl (411 kB)
+2026-11-02T05:44:03.3898014Z Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+2026-11-02T05:44:03.3911864Z Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-11-02T05:44:03.3925503Z Using cached packaging-26.3-py3-none-any.whl (129 kB)
+2026-11-02T05:44:03.3939802Z Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-11-02T05:44:03.5294851Z Installing collected packages: pygments, pluggy, packaging, iniconfig, pytest
+2026-11-02T05:44:04.5165778Z 
+2026-11-02T05:44:04.5176056Z Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0
+2026-11-02T05:44:04.5640900Z ##[error]Process completed with exit code 1.

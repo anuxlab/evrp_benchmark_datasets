@@ -1,0 +1,36 @@
+﻿2026-11-02T05:44:05.9345797Z ##[group]Run actions/github-script@v8
+2026-11-02T05:44:05.9346115Z with:
+2026-11-02T05:44:05.9349962Z   script: const labels = [
+  {name:"datasets", color:"1D76DB", description:"EVRP dataset acquisition, parsing or validation"},
+  {name:"ci-failure", color:"B60205", description:"Continuous integration failure"},
+  {name:"workflow-failure", color:"D93F0B", description:"GitHub Actions workflow failed"}
+];
+for (const label of labels) {
+  try { await github.rest.issues.getLabel({...context.repo, name:label.name}); }
+  catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+}
+const title = `[CI] EVRP smoke tests failed — run ${context.runNumber}`;
+const open = await github.rest.issues.listForRepo({...context.repo, state:"open", per_page:100});
+if (!open.data.some(i => i.title === title)) {
+  await github.rest.issues.create({
+    ...context.repo, title,
+    body: `Workflow failed. Review run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\nCommit: ${context.sha}\nDownload the workflow artifact for pytest output, parser logs and reports.`,
+    labels:["datasets","ci-failure","workflow-failure"]
+  });
+}
+
+2026-11-02T05:44:05.9356167Z   github-token: ***
+2026-11-02T05:44:05.9356397Z   debug: false
+2026-11-02T05:44:05.9356618Z   user-agent: actions/github-script
+2026-11-02T05:44:05.9356898Z   result-encoding: json
+2026-11-02T05:44:05.9357120Z   retries: 0
+2026-11-02T05:44:05.9357659Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-11-02T05:44:05.9357962Z env:
+2026-11-02T05:44:05.9358223Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:05.9358661Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:05.9380032Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:05.9380721Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:05.9381429Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:05.9382234Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:05.9382843Z ##[endgroup]
+2026-11-02T05:44:08.1635656Z [@octokit/request] "POST https://api.github.com/repos/anuxlab/evrp_benchmark_datasets/issues" is deprecated. It is scheduled to be removed on Fri, 10 Mar 2028 00:00:00 GMT. See https://docs.github.com/en/rest/about-the-rest-api/api-versions

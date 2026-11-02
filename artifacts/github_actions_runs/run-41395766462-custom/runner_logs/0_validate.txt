@@ -1,0 +1,339 @@
+﻿2026-11-02T05:44:31.8716326Z Current runner version: '2.338.2'
+2026-11-02T05:44:31.8742096Z ##[group]Runner Image Provisioner
+2026-11-02T05:44:31.8742986Z Hosted Compute Agent
+2026-11-02T05:44:31.8743580Z Version: 20261021.618
+2026-11-02T05:44:31.8744326Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-02T05:44:31.8745050Z Build Date: 2026-10-21T00:45:21Z
+2026-11-02T05:44:31.8745704Z Worker ID: {94658a14-0921-4c2c-acb2-b9b707312d9c}
+2026-11-02T05:44:31.8746467Z Region: eastus
+2026-11-02T05:44:31.8747008Z Cloud: Azure
+2026-11-02T05:44:31.8748033Z ##[endgroup]
+2026-11-02T05:44:31.8749979Z ##[group]Operating System
+2026-11-02T05:44:31.8750624Z Ubuntu
+2026-11-02T05:44:31.8751612Z 26.04.1
+2026-11-02T05:44:31.8752177Z LTS
+2026-11-02T05:44:31.8752797Z ##[endgroup]
+2026-11-02T05:44:31.8753382Z ##[group]Runner Image
+2026-11-02T05:44:31.8753987Z Image: ubuntu-26.04
+2026-11-02T05:44:31.8754587Z Version: 20261025.179.1
+2026-11-02T05:44:31.8755951Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261025.179/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-02T05:44:31.8757655Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261025.179
+2026-11-02T05:44:31.8758622Z ##[endgroup]
+2026-11-02T05:44:31.8759859Z ##[group]GITHUB_TOKEN Permissions
+2026-11-02T05:44:31.8762382Z Contents: read
+2026-11-02T05:44:31.8763100Z Issues: write
+2026-11-02T05:44:31.8763761Z Metadata: read
+2026-11-02T05:44:31.8764348Z ##[endgroup]
+2026-11-02T05:44:31.8766797Z Secret source: Actions
+2026-11-02T05:44:31.8767767Z Cache mode: write
+2026-11-02T05:44:31.8768855Z Prepare workflow directory
+2026-11-02T05:44:31.9115115Z Prepare all required actions
+2026-11-02T05:44:31.9165467Z Getting action download info
+2026-11-02T05:44:32.0995012Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-02T05:44:32.1925689Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-11-02T05:44:32.2516795Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-11-02T05:44:32.3212455Z Download action repository 'actions/github-script@v8' (SHA:ed597411d8f924073f98dfc5c65a23a2325f34cd)
+2026-11-02T05:44:32.6184483Z Complete job name: validate
+2026-11-02T05:44:32.7078122Z ##[group]Run mkdir -p reports runner-logs
+2026-11-02T05:44:32.7078951Z [36;1mmkdir -p reports runner-logs[0m
+2026-11-02T05:44:32.7113358Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:32.7114259Z ##[endgroup]
+2026-11-02T05:44:32.7445452Z ##[group]Run {
+2026-11-02T05:44:32.7446069Z [36;1m{[0m
+2026-11-02T05:44:32.7446573Z [36;1m  echo "Run ID: $GITHUB_RUN_ID"[0m
+2026-11-02T05:44:32.7447282Z [36;1m  echo "Run number: $GITHUB_RUN_NUMBER"[0m
+2026-11-02T05:44:32.7447963Z [36;1m  echo "Commit: $GITHUB_SHA"[0m
+2026-11-02T05:44:32.7448621Z [36;1m  echo "Runner: $RUNNER_OS / $RUNNER_ARCH"[0m
+2026-11-02T05:44:32.7449279Z [36;1m  echo "Dataset: all"[0m
+2026-11-02T05:44:32.7449873Z [36;1m  echo "Problem variant: all"[0m
+2026-11-02T05:44:32.7450527Z [36;1m  echo "Instance mode: all"[0m
+2026-11-02T05:44:32.7451320Z [36;1m  echo "Instance names: "[0m
+2026-11-02T05:44:32.7451954Z [36;1m  echo "Max instances: 0"[0m
+2026-11-02T05:44:32.7452592Z [36;1m  echo "Validation level: strict"[0m
+2026-11-02T05:44:32.7453238Z [36;1m  echo "Fail on empty: false"[0m
+2026-11-02T05:44:32.7453861Z [36;1m  python --version || true[0m
+2026-11-02T05:44:32.7454468Z [36;1m  uname -a[0m
+2026-11-02T05:44:32.7454997Z [36;1m  df -h[0m
+2026-11-02T05:44:32.7455547Z [36;1m} | tee runner-logs/00-run-context.txt[0m
+2026-11-02T05:44:32.7487239Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:32.7487816Z ##[endgroup]
+2026-11-02T05:44:32.7594611Z Run ID: 41395766462
+2026-11-02T05:44:32.7595698Z Run number: 1
+2026-11-02T05:44:32.7596721Z Commit: e2b989fa15041085f7a401408e16c5ea795057a7
+2026-11-02T05:44:32.7597521Z Runner: Linux / X64
+2026-11-02T05:44:32.7598038Z Dataset: all
+2026-11-02T05:44:32.7598533Z Problem variant: all
+2026-11-02T05:44:32.7599223Z Instance mode: all
+2026-11-02T05:44:32.7600224Z Instance names: 
+2026-11-02T05:44:32.7600713Z Max instances: 0
+2026-11-02T05:44:32.7601779Z Validation level: strict
+2026-11-02T05:44:32.7602353Z Fail on empty: false
+2026-11-02T05:44:32.7602853Z Python 3.14.4
+2026-11-02T05:44:32.7603724Z Linux runnervmnwato 7.0.0-1017-azure #17-Ubuntu SMP PREEMPT Thu Sep 24 15:54:51 UTC 2026 x86_64 GNU/Linux
+2026-11-02T05:44:32.7706319Z Filesystem      Size  Used Avail Use% Mounted on
+2026-11-02T05:44:32.7707829Z /dev/root       145G   57G   88G  40% /
+2026-11-02T05:44:32.7709005Z tmpfs           7.9G     0  7.9G   0% /dev/shm
+2026-11-02T05:44:32.7709717Z tmpfs           3.2G  1.1M  3.2G   1% /run
+2026-11-02T05:44:32.7710470Z efivarfs        128M   32K  128M   1% /sys/firmware/efi/efivars
+2026-11-02T05:44:32.7711697Z none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+2026-11-02T05:44:32.7712652Z none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+2026-11-02T05:44:32.7713450Z /dev/sda13      989M   84M  838M  10% /boot
+2026-11-02T05:44:32.7714160Z /dev/sda15      105M  6.3M   99M   7% /boot/efi
+2026-11-02T05:44:32.7714944Z none            1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+2026-11-02T05:44:32.7715836Z tmpfs           1.6G  8.0K  1.6G   1% /run/user/1001
+2026-11-02T05:44:32.7717483Z none            1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+2026-11-02T05:44:32.7719032Z none            1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+2026-11-02T05:44:32.7896807Z ##[group]Run actions/checkout@v5
+2026-11-02T05:44:32.7897487Z with:
+2026-11-02T05:44:32.7898006Z   repository: anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:32.7902915Z   token: ***
+2026-11-02T05:44:32.7903433Z   ssh-strict: true
+2026-11-02T05:44:32.7903925Z   ssh-user: git
+2026-11-02T05:44:32.7904418Z   persist-credentials: true
+2026-11-02T05:44:32.7904954Z   clean: true
+2026-11-02T05:44:32.7905429Z   sparse-checkout-cone-mode: true
+2026-11-02T05:44:32.7905995Z   fetch-depth: 1
+2026-11-02T05:44:32.7984713Z   fetch-tags: false
+2026-11-02T05:44:32.7985284Z   show-progress: true
+2026-11-02T05:44:32.7985863Z   lfs: false
+2026-11-02T05:44:32.7986381Z   submodules: false
+2026-11-02T05:44:32.7986961Z   set-safe-directory: true
+2026-11-02T05:44:32.7987528Z   allow-unsafe-pr-checkout: false
+2026-11-02T05:44:32.7988141Z ##[endgroup]
+2026-11-02T05:44:33.0755668Z Syncing repository: anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:33.0758262Z ##[group]Getting Git version info
+2026-11-02T05:44:33.0759453Z Working directory is '/home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets'
+2026-11-02T05:44:33.0761819Z [command]/usr/bin/git version
+2026-11-02T05:44:33.0782141Z git version 2.56.0
+2026-11-02T05:44:33.0806186Z ##[endgroup]
+2026-11-02T05:44:33.0822558Z Temporarily overriding HOME='/home/runner/work/_temp/ff8b0cbb-fe01-4a80-80ac-f5eb3c155069' before making global git config changes
+2026-11-02T05:44:33.0824155Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-02T05:44:33.0839024Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets
+2026-11-02T05:44:33.0915877Z Deleting the contents of '/home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets'
+2026-11-02T05:44:33.0937253Z ##[group]Initializing the repository
+2026-11-02T05:44:33.0943126Z [command]/usr/bin/git init /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets
+2026-11-02T05:44:33.1047751Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-02T05:44:33.1048959Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-02T05:44:33.1050420Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-02T05:44:33.1051693Z hint: call:
+2026-11-02T05:44:33.1052363Z hint:
+2026-11-02T05:44:33.1052969Z hint: 	git config --global init.defaultBranch <name>
+2026-11-02T05:44:33.1053919Z hint:
+2026-11-02T05:44:33.1054942Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-02T05:44:33.1056558Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-02T05:44:33.1058040Z hint:
+2026-11-02T05:44:33.1058816Z hint: 	git branch -m <name>
+2026-11-02T05:44:33.1059761Z hint:
+2026-11-02T05:44:33.1060824Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-02T05:44:33.1062673Z Initialized empty Git repository in /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets/.git/
+2026-11-02T05:44:33.1073733Z [command]/usr/bin/git remote add origin https://github.com/anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:33.1129225Z ##[endgroup]
+2026-11-02T05:44:33.1130104Z ##[group]Disabling automatic garbage collection
+2026-11-02T05:44:33.1133792Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-02T05:44:33.1183985Z ##[endgroup]
+2026-11-02T05:44:33.1185746Z ##[group]Setting up auth
+2026-11-02T05:44:33.1192058Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-02T05:44:33.1229755Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-02T05:44:33.1714327Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-02T05:44:33.1753620Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-02T05:44:33.2037554Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-02T05:44:33.2075471Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-02T05:44:33.2354087Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-02T05:44:33.2395735Z ##[endgroup]
+2026-11-02T05:44:33.2396882Z ##[group]Fetching the repository
+2026-11-02T05:44:33.2406863Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e2b989fa15041085f7a401408e16c5ea795057a7:refs/remotes/origin/main
+2026-11-02T05:44:33.4803323Z From https://github.com/anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:33.4806030Z  * [new ref]         e2b989fa15041085f7a401408e16c5ea795057a7 -> origin/main
+2026-11-02T05:44:33.4814859Z ##[endgroup]
+2026-11-02T05:44:33.4816183Z ##[group]Determining the checkout info
+2026-11-02T05:44:33.4817572Z ##[endgroup]
+2026-11-02T05:44:33.4818481Z [command]/usr/bin/git sparse-checkout disable
+2026-11-02T05:44:33.4860402Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-02T05:44:33.4893385Z ##[group]Checking out the ref
+2026-11-02T05:44:33.4897317Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-02T05:44:33.5173689Z Switched to a new branch 'main'
+2026-11-02T05:44:33.5179562Z branch 'main' set up to track 'origin/main'.
+2026-11-02T05:44:33.5193336Z ##[endgroup]
+2026-11-02T05:44:33.5241449Z [command]/usr/bin/git log -1 --format=%H
+2026-11-02T05:44:33.5267567Z e2b989fa15041085f7a401408e16c5ea795057a7
+2026-11-02T05:44:33.5603247Z ##[group]Run actions/setup-python@v6
+2026-11-02T05:44:33.5604558Z with:
+2026-11-02T05:44:33.5605473Z   python-version: 3.11
+2026-11-02T05:44:33.5606523Z   cache: pip
+2026-11-02T05:44:33.5607471Z   check-latest: false
+2026-11-02T05:44:33.5619026Z   token: ***
+2026-11-02T05:44:33.5620021Z   update-environment: true
+2026-11-02T05:44:33.5621279Z   allow-prereleases: false
+2026-11-02T05:44:33.5622397Z   freethreaded: false
+2026-11-02T05:44:33.5623409Z ##[endgroup]
+2026-11-02T05:44:33.7032243Z ##[group]Installed versions
+2026-11-02T05:44:33.7162184Z Successfully set up CPython (3.11.17)
+2026-11-02T05:44:33.7165532Z ##[endgroup]
+2026-11-02T05:44:33.8181960Z [command]/opt/hostedtoolcache/Python/3.11.17/x64/bin/pip cache dir
+2026-11-02T05:44:34.1084321Z /home/runner/.cache/pip
+2026-11-02T05:44:34.1986691Z Cache hit for: setup-python-Linux-x64-26.04-Ubuntu-python-3.11.17-pip-92971d83a7e6db76ab1f3091c71a0ef84148a5f54291fc1cc23f9d349dd2cf35
+2026-11-02T05:44:34.3138377Z Received 1946815 of 1946815 (100.0%), 28.6 MBs/sec
+2026-11-02T05:44:34.3141037Z Cache Size: ~2 MB (1946815 B)
+2026-11-02T05:44:34.3168250Z [command]/usr/bin/tar -xf /home/runner/work/_temp/d25f63d6-8e09-4ebf-ab6c-4a20bfd389e6/cache.tzst -P -C /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets --use-compress-program unzstd
+2026-11-02T05:44:34.3295466Z Cache restored successfully
+2026-11-02T05:44:34.3303183Z Cache restored from key: setup-python-Linux-x64-26.04-Ubuntu-python-3.11.17-pip-92971d83a7e6db76ab1f3091c71a0ef84148a5f54291fc1cc23f9d349dd2cf35
+2026-11-02T05:44:34.3498429Z ##[group]Run set -o pipefail
+2026-11-02T05:44:34.3499637Z [36;1mset -o pipefail[0m
+2026-11-02T05:44:34.3501614Z [36;1mpython -m pip install --upgrade pip pytest 2>&1 | tee runner-logs/01-install.txt[0m
+2026-11-02T05:44:34.3539553Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:34.3540639Z env:
+2026-11-02T05:44:34.3541932Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:34.3543840Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:34.3545741Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:34.3547449Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:34.3549187Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:34.3550934Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:34.3552536Z ##[endgroup]
+2026-11-02T05:44:34.3657642Z runner-logs/01-install.txt: No such file or directory (os error 2)
+2026-11-02T05:44:34.8586340Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages (26.2.2)
+2026-11-02T05:44:34.9669894Z Collecting pytest
+2026-11-02T05:44:34.9689690Z   Using cached pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+2026-11-02T05:44:34.9870594Z Collecting iniconfig>=2 (from pytest)
+2026-11-02T05:44:34.9887204Z   Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-11-02T05:44:35.0073315Z Collecting packaging>=24 (from pytest)
+2026-11-02T05:44:35.0090170Z   Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-11-02T05:44:35.0250079Z Collecting pluggy<2,>=1.6 (from pytest)
+2026-11-02T05:44:35.0265847Z   Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+2026-11-02T05:44:35.0469407Z Collecting pygments>=2.15 (from pytest)
+2026-11-02T05:44:35.0484814Z   Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-11-02T05:44:35.0525791Z Using cached pytest-9.2.0-py3-none-any.whl (411 kB)
+2026-11-02T05:44:35.0543484Z Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+2026-11-02T05:44:35.0557848Z Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-11-02T05:44:35.0572851Z Using cached packaging-26.3-py3-none-any.whl (129 kB)
+2026-11-02T05:44:35.0587461Z Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-11-02T05:44:35.1248082Z Installing collected packages: pygments, pluggy, packaging, iniconfig, pytest
+2026-11-02T05:44:36.1328339Z 
+2026-11-02T05:44:36.1338791Z Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0
+2026-11-02T05:44:36.1865773Z ##[error]Process completed with exit code 1.
+2026-11-02T05:44:36.1948647Z ##[group]Run {
+2026-11-02T05:44:36.1948941Z [36;1m{[0m
+2026-11-02T05:44:36.1949181Z [36;1m  echo "# GitHub Actions run metadata"[0m
+2026-11-02T05:44:36.1949478Z [36;1m  echo[0m
+2026-11-02T05:44:36.1949835Z [36;1m  echo "- Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"[0m
+2026-11-02T05:44:36.1950292Z [36;1m  echo "- Commit: $GITHUB_SHA"[0m
+2026-11-02T05:44:36.1950602Z [36;1m  echo "- Trigger: $GITHUB_EVENT_NAME"[0m
+2026-11-02T05:44:36.1950907Z [36;1m  echo "- Dataset: all"[0m
+2026-11-02T05:44:36.1951714Z [36;1m  echo "- Variant: all"[0m
+2026-11-02T05:44:36.1952003Z [36;1m  echo "- Instance mode: all"[0m
+2026-11-02T05:44:36.1952307Z [36;1m  echo "- Validation level: strict"[0m
+2026-11-02T05:44:36.1952641Z [36;1m} > reports/RUN_METADATA.md[0m
+2026-11-02T05:44:36.1983580Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:36.1983856Z env:
+2026-11-02T05:44:36.1984136Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1984629Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:36.1985072Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1985478Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1985872Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1986270Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:36.1986605Z ##[endgroup]
+2026-11-02T05:44:36.2144853Z ##[group]Run actions/upload-artifact@v7
+2026-11-02T05:44:36.2145429Z with:
+2026-11-02T05:44:36.2145814Z   name: evrp-validation-1-all
+2026-11-02T05:44:36.2146139Z   path: reports/
+runner-logs/
+
+2026-11-02T05:44:36.2146411Z   if-no-files-found: warn
+2026-11-02T05:44:36.2146652Z   retention-days: 90
+2026-11-02T05:44:36.2146876Z   compression-level: 6
+2026-11-02T05:44:36.2147106Z   overwrite: false
+2026-11-02T05:44:36.2147321Z   include-hidden-files: false
+2026-11-02T05:44:36.2147564Z   archive: true
+2026-11-02T05:44:36.2147759Z env:
+2026-11-02T05:44:36.2148023Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2148473Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:36.2148933Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2149335Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2149728Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2150177Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:36.2150521Z ##[endgroup]
+2026-11-02T05:44:36.3687675Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-02T05:44:36.3690757Z The least common ancestor is /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets. This will be the root directory of the artifact
+2026-11-02T05:44:36.3692926Z With the provided path, there will be 6 files uploaded
+2026-11-02T05:44:36.3696878Z Artifact name is valid!
+2026-11-02T05:44:36.3697939Z Root directory input is valid!
+2026-11-02T05:44:36.5832913Z Uploading artifact: evrp-validation-1-all.zip
+2026-11-02T05:44:36.5874765Z Beginning upload of artifact content to blob storage
+2026-11-02T05:44:36.7244999Z Uploaded bytes 188640
+2026-11-02T05:44:36.7409047Z Finished uploading artifact content to blob storage!
+2026-11-02T05:44:36.7410237Z SHA256 digest of uploaded artifact is baacc7a2af21fae264f29e14437af5a6cd04a5e479a7ac2fb6d1c8432fb5f489
+2026-11-02T05:44:36.7411448Z Finalizing artifact upload
+2026-11-02T05:44:37.1652300Z Artifact evrp-validation-1-all successfully finalized. Artifact ID 13118879125
+2026-11-02T05:44:37.1653868Z Artifact evrp-validation-1-all has been successfully uploaded! Final size is 188640 bytes. Artifact ID is 13118879125
+2026-11-02T05:44:37.1657384Z Artifact download URL: https://github.com/anuxlab/evrp_benchmark_datasets/actions/runs/41395766462/artifacts/13118879125
+2026-11-02T05:44:37.1824585Z ##[group]Run actions/github-script@v8
+2026-11-02T05:44:37.1824920Z with:
+2026-11-02T05:44:37.1830208Z   script: const labels = [
+  {name: "datasets", color: "1D76DB", description: "EVRP dataset acquisition, parsing or validation"},
+  {name: "ci-failure", color: "B60205", description: "Continuous integration failure"},
+  {name: "workflow-failure", color: "D93F0B", description: "GitHub Actions workflow failed"}
+];
+for (const label of labels) {
+  try { await github.rest.issues.getLabel({...context.repo, name: label.name}); }
+  catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+}
+const title = `[CI] Custom EVRP validation failed — run ${context.runNumber}`;
+const existing = await github.rest.issues.listForRepo({
+  ...context.repo, state: "open", per_page: 100
+});
+if (existing.data.some(i => i.title === title)) {
+  core.info("A matching open issue already exists.");
+} else {
+  const body = [
+    "## Automated workflow failure",
+    "",
+    `- Workflow: ${context.workflow}`,
+    `- Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+    `- Commit: \`${context.sha}\``,
+    `- Dataset selection: \`${process.env.INPUT_DATASET}\``,
+    `- Problem variant: \`${process.env.INPUT_VARIANT}\``,
+    `- Instance mode: \`${process.env.INPUT_INSTANCE_MODE}\``,
+    `- Validation level: \`${process.env.INPUT_VALIDATION_LEVEL}\``,
+    "",
+    "Download the workflow artifact for runner logs, parser output and JSON/CSV/Markdown reports.",
+    "Please triage the failure, attach a minimal reproducer, and close this issue only after a successful rerun."
+  ].join("\n");
+  await github.rest.issues.create({
+    ...context.repo, title, body,
+    labels: ["datasets", "ci-failure", "workflow-failure"]
+  });
+}
+
+2026-11-02T05:44:37.1838732Z   github-token: ***
+2026-11-02T05:44:37.1838971Z   debug: false
+2026-11-02T05:44:37.1839209Z   user-agent: actions/github-script
+2026-11-02T05:44:37.1839494Z   result-encoding: json
+2026-11-02T05:44:37.1839732Z   retries: 0
+2026-11-02T05:44:37.1839985Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-11-02T05:44:37.1840429Z env:
+2026-11-02T05:44:37.1840699Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1841152Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:37.1841871Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1842283Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1842680Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1843099Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:37.1843480Z   INPUT_DATASET: ${process.env.INPUT_DATASET}
+2026-11-02T05:44:37.1843805Z   INPUT_VARIANT: ${process.env.INPUT_VARIANT}
+2026-11-02T05:44:37.1844166Z   INPUT_INSTANCE_MODE: ${process.env.INPUT_INSTANCE_MODE}
+2026-11-02T05:44:37.1844580Z   INPUT_VALIDATION_LEVEL: ${process.env.INPUT_VALIDATION_LEVEL}
+2026-11-02T05:44:37.1844938Z ##[endgroup]
+2026-11-02T05:44:38.2645676Z [@octokit/request] "POST https://api.github.com/repos/anuxlab/evrp_benchmark_datasets/issues" is deprecated. It is scheduled to be removed on Fri, 10 Mar 2028 00:00:00 GMT. See https://docs.github.com/en/rest/about-the-rest-api/api-versions
+2026-11-02T05:44:38.2845243Z Post job cleanup.
+2026-11-02T05:44:38.3762213Z [command]/usr/bin/git version
+2026-11-02T05:44:38.3812665Z git version 2.56.0
+2026-11-02T05:44:38.3859597Z Temporarily overriding HOME='/home/runner/work/_temp/908666cc-ce1e-4b75-b91b-cf6750fb2527' before making global git config changes
+2026-11-02T05:44:38.3860663Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-02T05:44:38.3866466Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets
+2026-11-02T05:44:38.3913975Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-02T05:44:38.3954660Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-02T05:44:38.4283313Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-02T05:44:38.4311381Z http.https://github.com/.extraheader
+2026-11-02T05:44:38.4325043Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-02T05:44:38.4376566Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-02T05:44:38.4700812Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-02T05:44:38.4737308Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-02T05:44:38.5216084Z Cleaning up orphan processes

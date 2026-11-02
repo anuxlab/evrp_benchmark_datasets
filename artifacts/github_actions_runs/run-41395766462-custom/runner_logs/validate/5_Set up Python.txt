@@ -1,0 +1,21 @@
+﻿2026-11-02T05:44:33.5603212Z ##[group]Run actions/setup-python@v6
+2026-11-02T05:44:33.5604552Z with:
+2026-11-02T05:44:33.5605466Z   python-version: 3.11
+2026-11-02T05:44:33.5606518Z   cache: pip
+2026-11-02T05:44:33.5607467Z   check-latest: false
+2026-11-02T05:44:33.5619017Z   token: ***
+2026-11-02T05:44:33.5620016Z   update-environment: true
+2026-11-02T05:44:33.5621274Z   allow-prereleases: false
+2026-11-02T05:44:33.5622392Z   freethreaded: false
+2026-11-02T05:44:33.5623398Z ##[endgroup]
+2026-11-02T05:44:33.7032169Z ##[group]Installed versions
+2026-11-02T05:44:33.7162123Z Successfully set up CPython (3.11.17)
+2026-11-02T05:44:33.7165503Z ##[endgroup]
+2026-11-02T05:44:33.8181884Z [command]/opt/hostedtoolcache/Python/3.11.17/x64/bin/pip cache dir
+2026-11-02T05:44:34.1084249Z /home/runner/.cache/pip
+2026-11-02T05:44:34.1986638Z Cache hit for: setup-python-Linux-x64-26.04-Ubuntu-python-3.11.17-pip-92971d83a7e6db76ab1f3091c71a0ef84148a5f54291fc1cc23f9d349dd2cf35
+2026-11-02T05:44:34.3138201Z Received 1946815 of 1946815 (100.0%), 28.6 MBs/sec
+2026-11-02T05:44:34.3141005Z Cache Size: ~2 MB (1946815 B)
+2026-11-02T05:44:34.3168220Z [command]/usr/bin/tar -xf /home/runner/work/_temp/d25f63d6-8e09-4ebf-ab6c-4a20bfd389e6/cache.tzst -P -C /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets --use-compress-program unzstd
+2026-11-02T05:44:34.3295395Z Cache restored successfully
+2026-11-02T05:44:34.3303157Z Cache restored from key: setup-python-Linux-x64-26.04-Ubuntu-python-3.11.17-pip-92971d83a7e6db76ab1f3091c71a0ef84148a5f54291fc1cc23f9d349dd2cf35

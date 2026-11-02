@@ -1,0 +1,57 @@
+﻿2026-11-02T05:44:37.1824575Z ##[group]Run actions/github-script@v8
+2026-11-02T05:44:37.1824917Z with:
+2026-11-02T05:44:37.1830151Z   script: const labels = [
+  {name: "datasets", color: "1D76DB", description: "EVRP dataset acquisition, parsing or validation"},
+  {name: "ci-failure", color: "B60205", description: "Continuous integration failure"},
+  {name: "workflow-failure", color: "D93F0B", description: "GitHub Actions workflow failed"}
+];
+for (const label of labels) {
+  try { await github.rest.issues.getLabel({...context.repo, name: label.name}); }
+  catch { await github.rest.issues.createLabel({...context.repo, ...label}); }
+}
+const title = `[CI] Custom EVRP validation failed — run ${context.runNumber}`;
+const existing = await github.rest.issues.listForRepo({
+  ...context.repo, state: "open", per_page: 100
+});
+if (existing.data.some(i => i.title === title)) {
+  core.info("A matching open issue already exists.");
+} else {
+  const body = [
+    "## Automated workflow failure",
+    "",
+    `- Workflow: ${context.workflow}`,
+    `- Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+    `- Commit: \`${context.sha}\``,
+    `- Dataset selection: \`${process.env.INPUT_DATASET}\``,
+    `- Problem variant: \`${process.env.INPUT_VARIANT}\``,
+    `- Instance mode: \`${process.env.INPUT_INSTANCE_MODE}\``,
+    `- Validation level: \`${process.env.INPUT_VALIDATION_LEVEL}\``,
+    "",
+    "Download the workflow artifact for runner logs, parser output and JSON/CSV/Markdown reports.",
+    "Please triage the failure, attach a minimal reproducer, and close this issue only after a successful rerun."
+  ].join("\n");
+  await github.rest.issues.create({
+    ...context.repo, title, body,
+    labels: ["datasets", "ci-failure", "workflow-failure"]
+  });
+}
+
+2026-11-02T05:44:37.1838725Z   github-token: ***
+2026-11-02T05:44:37.1838968Z   debug: false
+2026-11-02T05:44:37.1839207Z   user-agent: actions/github-script
+2026-11-02T05:44:37.1839492Z   result-encoding: json
+2026-11-02T05:44:37.1839722Z   retries: 0
+2026-11-02T05:44:37.1839982Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-11-02T05:44:37.1840426Z env:
+2026-11-02T05:44:37.1840696Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1841150Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:37.1841866Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1842280Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1842678Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:37.1843096Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:37.1843477Z   INPUT_DATASET: ${process.env.INPUT_DATASET}
+2026-11-02T05:44:37.1843803Z   INPUT_VARIANT: ${process.env.INPUT_VARIANT}
+2026-11-02T05:44:37.1844164Z   INPUT_INSTANCE_MODE: ${process.env.INPUT_INSTANCE_MODE}
+2026-11-02T05:44:37.1844578Z   INPUT_VALIDATION_LEVEL: ${process.env.INPUT_VALIDATION_LEVEL}
+2026-11-02T05:44:37.1844932Z ##[endgroup]
+2026-11-02T05:44:38.2645628Z [@octokit/request] "POST https://api.github.com/repos/anuxlab/evrp_benchmark_datasets/issues" is deprecated. It is scheduled to be removed on Fri, 10 Mar 2028 00:00:00 GMT. See https://docs.github.com/en/rest/about-the-rest-api/api-versions

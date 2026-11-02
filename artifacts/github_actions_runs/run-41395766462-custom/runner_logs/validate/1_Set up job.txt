@@ -1,0 +1,36 @@
+﻿2026-11-02T05:44:31.8715405Z Current runner version: '2.338.2'
+2026-11-02T05:44:31.8742072Z ##[group]Runner Image Provisioner
+2026-11-02T05:44:31.8742982Z Hosted Compute Agent
+2026-11-02T05:44:31.8743577Z Version: 20261021.618
+2026-11-02T05:44:31.8744322Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-02T05:44:31.8745046Z Build Date: 2026-10-21T00:45:21Z
+2026-11-02T05:44:31.8745701Z Worker ID: {94658a14-0921-4c2c-acb2-b9b707312d9c}
+2026-11-02T05:44:31.8746463Z Region: eastus
+2026-11-02T05:44:31.8747005Z Cloud: Azure
+2026-11-02T05:44:31.8747940Z ##[endgroup]
+2026-11-02T05:44:31.8749958Z ##[group]Operating System
+2026-11-02T05:44:31.8750620Z Ubuntu
+2026-11-02T05:44:31.8751602Z 26.04.1
+2026-11-02T05:44:31.8752174Z LTS
+2026-11-02T05:44:31.8752794Z ##[endgroup]
+2026-11-02T05:44:31.8753379Z ##[group]Runner Image
+2026-11-02T05:44:31.8753983Z Image: ubuntu-26.04
+2026-11-02T05:44:31.8754584Z Version: 20261025.179.1
+2026-11-02T05:44:31.8755753Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261025.179/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-02T05:44:31.8757650Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261025.179
+2026-11-02T05:44:31.8758619Z ##[endgroup]
+2026-11-02T05:44:31.8759855Z ##[group]GITHUB_TOKEN Permissions
+2026-11-02T05:44:31.8762361Z Contents: read
+2026-11-02T05:44:31.8763095Z Issues: write
+2026-11-02T05:44:31.8763758Z Metadata: read
+2026-11-02T05:44:31.8764345Z ##[endgroup]
+2026-11-02T05:44:31.8766774Z Secret source: Actions
+2026-11-02T05:44:31.8767763Z Cache mode: write
+2026-11-02T05:44:31.8768813Z Prepare workflow directory
+2026-11-02T05:44:31.9115072Z Prepare all required actions
+2026-11-02T05:44:31.9165428Z Getting action download info
+2026-11-02T05:44:32.0994972Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-02T05:44:32.1925660Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-11-02T05:44:32.2516713Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-11-02T05:44:32.3212413Z Download action repository 'actions/github-script@v8' (SHA:ed597411d8f924073f98dfc5c65a23a2325f34cd)
+2026-11-02T05:44:32.6184447Z Complete job name: validate

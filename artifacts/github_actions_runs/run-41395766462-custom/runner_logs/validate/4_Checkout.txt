@@ -1,0 +1,73 @@
+﻿2026-11-02T05:44:32.7896772Z ##[group]Run actions/checkout@v5
+2026-11-02T05:44:32.7897479Z with:
+2026-11-02T05:44:32.7897999Z   repository: anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:32.7902902Z   token: ***
+2026-11-02T05:44:32.7903428Z   ssh-strict: true
+2026-11-02T05:44:32.7903920Z   ssh-user: git
+2026-11-02T05:44:32.7904413Z   persist-credentials: true
+2026-11-02T05:44:32.7904950Z   clean: true
+2026-11-02T05:44:32.7905425Z   sparse-checkout-cone-mode: true
+2026-11-02T05:44:32.7905992Z   fetch-depth: 1
+2026-11-02T05:44:32.7984682Z   fetch-tags: false
+2026-11-02T05:44:32.7985278Z   show-progress: true
+2026-11-02T05:44:32.7985858Z   lfs: false
+2026-11-02T05:44:32.7986376Z   submodules: false
+2026-11-02T05:44:32.7986957Z   set-safe-directory: true
+2026-11-02T05:44:32.7987524Z   allow-unsafe-pr-checkout: false
+2026-11-02T05:44:32.7988137Z ##[endgroup]
+2026-11-02T05:44:33.0755581Z Syncing repository: anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:33.0758230Z ##[group]Getting Git version info
+2026-11-02T05:44:33.0759271Z Working directory is '/home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets'
+2026-11-02T05:44:33.0761797Z [command]/usr/bin/git version
+2026-11-02T05:44:33.0782104Z git version 2.56.0
+2026-11-02T05:44:33.0806156Z ##[endgroup]
+2026-11-02T05:44:33.0822522Z Temporarily overriding HOME='/home/runner/work/_temp/ff8b0cbb-fe01-4a80-80ac-f5eb3c155069' before making global git config changes
+2026-11-02T05:44:33.0824147Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-02T05:44:33.0838989Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets
+2026-11-02T05:44:33.0915813Z Deleting the contents of '/home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets'
+2026-11-02T05:44:33.0937222Z ##[group]Initializing the repository
+2026-11-02T05:44:33.0943093Z [command]/usr/bin/git init /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets
+2026-11-02T05:44:33.1047608Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-02T05:44:33.1048952Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-02T05:44:33.1050403Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-02T05:44:33.1051674Z hint: call:
+2026-11-02T05:44:33.1052356Z hint:
+2026-11-02T05:44:33.1052963Z hint: 	git config --global init.defaultBranch <name>
+2026-11-02T05:44:33.1053905Z hint:
+2026-11-02T05:44:33.1054934Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-02T05:44:33.1056534Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-02T05:44:33.1058025Z hint:
+2026-11-02T05:44:33.1058808Z hint: 	git branch -m <name>
+2026-11-02T05:44:33.1059749Z hint:
+2026-11-02T05:44:33.1060808Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-02T05:44:33.1062626Z Initialized empty Git repository in /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets/.git/
+2026-11-02T05:44:33.1073700Z [command]/usr/bin/git remote add origin https://github.com/anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:33.1129174Z ##[endgroup]
+2026-11-02T05:44:33.1130099Z ##[group]Disabling automatic garbage collection
+2026-11-02T05:44:33.1133769Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-02T05:44:33.1183940Z ##[endgroup]
+2026-11-02T05:44:33.1185732Z ##[group]Setting up auth
+2026-11-02T05:44:33.1192022Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-02T05:44:33.1229715Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-02T05:44:33.1714269Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-02T05:44:33.1752992Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-02T05:44:33.2037433Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-02T05:44:33.2075417Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-02T05:44:33.2353985Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-02T05:44:33.2395694Z ##[endgroup]
+2026-11-02T05:44:33.2396873Z ##[group]Fetching the repository
+2026-11-02T05:44:33.2406835Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e2b989fa15041085f7a401408e16c5ea795057a7:refs/remotes/origin/main
+2026-11-02T05:44:33.4803205Z From https://github.com/anuxlab/evrp_benchmark_datasets
+2026-11-02T05:44:33.4805957Z  * [new ref]         e2b989fa15041085f7a401408e16c5ea795057a7 -> origin/main
+2026-11-02T05:44:33.4814831Z ##[endgroup]
+2026-11-02T05:44:33.4816176Z ##[group]Determining the checkout info
+2026-11-02T05:44:33.4817558Z ##[endgroup]
+2026-11-02T05:44:33.4818475Z [command]/usr/bin/git sparse-checkout disable
+2026-11-02T05:44:33.4860370Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-02T05:44:33.4893356Z ##[group]Checking out the ref
+2026-11-02T05:44:33.4897282Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-02T05:44:33.5173603Z Switched to a new branch 'main'
+2026-11-02T05:44:33.5179527Z branch 'main' set up to track 'origin/main'.
+2026-11-02T05:44:33.5193312Z ##[endgroup]
+2026-11-02T05:44:33.5241405Z [command]/usr/bin/git log -1 --format=%H
+2026-11-02T05:44:33.5267536Z e2b989fa15041085f7a401408e16c5ea795057a7

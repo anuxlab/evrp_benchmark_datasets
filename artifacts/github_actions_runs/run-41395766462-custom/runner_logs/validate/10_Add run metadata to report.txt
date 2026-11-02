@@ -1,0 +1,21 @@
+﻿2026-11-02T05:44:36.1948633Z ##[group]Run {
+2026-11-02T05:44:36.1948937Z [36;1m{[0m
+2026-11-02T05:44:36.1949178Z [36;1m  echo "# GitHub Actions run metadata"[0m
+2026-11-02T05:44:36.1949475Z [36;1m  echo[0m
+2026-11-02T05:44:36.1949832Z [36;1m  echo "- Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"[0m
+2026-11-02T05:44:36.1950289Z [36;1m  echo "- Commit: $GITHUB_SHA"[0m
+2026-11-02T05:44:36.1950600Z [36;1m  echo "- Trigger: $GITHUB_EVENT_NAME"[0m
+2026-11-02T05:44:36.1950904Z [36;1m  echo "- Dataset: all"[0m
+2026-11-02T05:44:36.1951709Z [36;1m  echo "- Variant: all"[0m
+2026-11-02T05:44:36.1951999Z [36;1m  echo "- Instance mode: all"[0m
+2026-11-02T05:44:36.1952304Z [36;1m  echo "- Validation level: strict"[0m
+2026-11-02T05:44:36.1952639Z [36;1m} > reports/RUN_METADATA.md[0m
+2026-11-02T05:44:36.1983572Z shell: /usr/bin/bash -e {0}
+2026-11-02T05:44:36.1983852Z env:
+2026-11-02T05:44:36.1984132Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1984586Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:36.1985069Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1985475Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1985870Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.1986267Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:36.1986602Z ##[endgroup]

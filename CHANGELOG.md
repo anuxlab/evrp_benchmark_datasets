@@ -24,3 +24,13 @@
 ## 0.1.0
 
 - Initial uploaded benchmark snapshots and parser smoke tests.
+
+## [0.3.1] - 2026-11-02
+
+### Fixed
+- Move checkout before creating `reports/` and `runner-logs/`; `actions/checkout` cleans the workspace and had removed the directories created earlier, causing `tee` to exit with `No such file or directory` in both validation workflows.
+- Pass custom workflow selections to the failure-issue step using GitHub Actions expressions (`${{ inputs.* }}`) rather than literal JavaScript template fragments, so issue metadata records the actual inputs.
+
+### Verified locally
+- Python test suite: 13 passed.
+- All three workflow YAML files parse successfully.

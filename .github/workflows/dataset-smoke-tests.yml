@@ -23,11 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Create log directories
-        run: mkdir -p reports runner-logs
-
       - name: Checkout
         uses: actions/checkout@v5
+
+      # Checkout cleans the workspace; create output directories afterwards.
+      - name: Create log directories
+        run: mkdir -p reports runner-logs
 
       - name: Set up Python
         uses: actions/setup-python@v6

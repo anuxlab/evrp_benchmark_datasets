@@ -74,8 +74,6 @@ See [Dataset catalogue](DATASET_CATALOG.md) and [Problem taxonomy](docs/PROBLEM_
 
 ## Start here
 
-- [Changelog](CHANGELOG.md)
-
 1. Read the dataset-specific `README.md` inside the corresponding `data/raw/<dataset-folder>/`.
 2. Check [DATASET_CATALOG.md](DATASET_CATALOG.md) for source links, DOI, publication, use cases and eligibility.
 3. Check [data/registry/evrp_dataset_registry.json](data/registry/evrp_dataset_registry.json) for machine-readable metadata.

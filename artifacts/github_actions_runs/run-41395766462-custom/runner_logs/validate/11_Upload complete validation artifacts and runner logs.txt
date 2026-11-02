@@ -1,0 +1,34 @@
+﻿2026-11-02T05:44:36.2144831Z ##[group]Run actions/upload-artifact@v7
+2026-11-02T05:44:36.2145420Z with:
+2026-11-02T05:44:36.2145807Z   name: evrp-validation-1-all
+2026-11-02T05:44:36.2146134Z   path: reports/
+runner-logs/
+
+2026-11-02T05:44:36.2146408Z   if-no-files-found: warn
+2026-11-02T05:44:36.2146649Z   retention-days: 90
+2026-11-02T05:44:36.2146873Z   compression-level: 6
+2026-11-02T05:44:36.2147094Z   overwrite: false
+2026-11-02T05:44:36.2147318Z   include-hidden-files: false
+2026-11-02T05:44:36.2147561Z   archive: true
+2026-11-02T05:44:36.2147757Z env:
+2026-11-02T05:44:36.2148019Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2148470Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-02T05:44:36.2148930Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2149333Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2149725Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-02T05:44:36.2150125Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-02T05:44:36.2150518Z ##[endgroup]
+2026-11-02T05:44:36.3687625Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-02T05:44:36.3690728Z The least common ancestor is /home/runner/work/evrp_benchmark_datasets/evrp_benchmark_datasets. This will be the root directory of the artifact
+2026-11-02T05:44:36.3692908Z With the provided path, there will be 6 files uploaded
+2026-11-02T05:44:36.3696861Z Artifact name is valid!
+2026-11-02T05:44:36.3697925Z Root directory input is valid!
+2026-11-02T05:44:36.5832893Z Uploading artifact: evrp-validation-1-all.zip
+2026-11-02T05:44:36.5874745Z Beginning upload of artifact content to blob storage
+2026-11-02T05:44:36.7244967Z Uploaded bytes 188640
+2026-11-02T05:44:36.7409000Z Finished uploading artifact content to blob storage!
+2026-11-02T05:44:36.7410194Z SHA256 digest of uploaded artifact is baacc7a2af21fae264f29e14437af5a6cd04a5e479a7ac2fb6d1c8432fb5f489
+2026-11-02T05:44:36.7411438Z Finalizing artifact upload
+2026-11-02T05:44:37.1652257Z Artifact evrp-validation-1-all successfully finalized. Artifact ID 13118879125
+2026-11-02T05:44:37.1653844Z Artifact evrp-validation-1-all has been successfully uploaded! Final size is 188640 bytes. Artifact ID is 13118879125
+2026-11-02T05:44:37.1657368Z Artifact download URL: https://github.com/anuxlab/evrp_benchmark_datasets/actions/runs/41395766462/artifacts/13118879125
