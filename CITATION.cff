@@ -1,0 +1,5 @@
+cff-version: 1.2.0
+message: "If you use this repository, cite the original dataset papers listed in README.md and DATASET_CATALOG.md."
+title: "EVRP Benchmark Lab"
+type: software
+license: MIT

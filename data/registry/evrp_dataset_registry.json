@@ -1,0 +1,669 @@
+{
+  "registry_version": "1.0.0",
+  "last_reviewed": "2026-11-02",
+  "policy": "A record in this registry is not proof that its files are locally downloaded or parsed. Local validation state is tracked separately.",
+  "datasets": [
+    {
+      "dataset_id": "EVRP-001",
+      "name": "Mavrovouniotis E-CVRP benchmark (current upstream listing)",
+      "problem_families": [
+        "E-CVRP",
+        "load-dependent energy E-CVRP"
+      ],
+      "official_source_url": "https://github.com/Mavrovouniotis/e-cvrp_benchmark_instances",
+      "dataset_doi": null,
+      "version": "GitHub master snapshot; pin commit before experiments",
+      "published_instance_count": 24,
+      "key_parameters": [
+        "coordinates",
+        "depot",
+        "customer demands",
+        "vehicle count",
+        "payload capacity",
+        "battery capacity",
+        "energy consumption",
+        "charging-station nodes",
+        "distance metric",
+        "published objective reference"
+      ],
+      "recommended_use_cases": "classical E-CVRP; load-dependent energy; charging-station density; scaling and metaheuristic comparison",
+      "compatibility": {
+        "E-CVRP": "direct_fit",
+        "EVRP": "direct_fit",
+        "EVRPTW": "unsupported",
+        "dynamic_price": "unsupported",
+        "nonlinear_charging": "unsupported",
+        "heterogeneous_fleet": "unsupported"
+      },
+      "provenance_status": "research_published_and_officially_hosted",
+      "licence_status": "upstream repository terms must be checked before redistribution",
+      "notes": "The uploaded 17-file ZIP is a separate historical/local snapshot; do not label it as the current 24-instance upstream listing. Current upstream file list has 24 .evrp instances.",
+      "related_citation_ids": [
+        "P02"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-002",
+      "name": "Schneider-Goeke E-VRPTW instances",
+      "problem_families": [
+        "E-VRPTW",
+        "E-CVRPTW"
+      ],
+      "official_source_url": "https://data.mendeley.com/datasets/h3mrm5dhxw/1",
+      "dataset_doi": "10.17632/h3mrm5dhxw.1",
+      "version": "Version 1 (2019)",
+      "published_instance_count": 92,
+      "key_parameters": [
+        "node type",
+        "coordinates",
+        "demand",
+        "ready time",
+        "due date",
+        "service time",
+        "battery Q",
+        "load capacity C",
+        "energy rate r",
+        "inverse refueling rate g",
+        "speed v"
+      ],
+      "recommended_use_cases": "time windows; clustered/random/random-clustered customer distributions; EVRP baselines and charging policy experiments",
+      "compatibility": {
+        "EVRPTW": "direct_fit",
+        "EVRP": "conditional_fit (relax time windows)",
+        "E-CVRP": "direct_fit",
+        "nonlinear_charging": "unsupported",
+        "dynamic_price": "unsupported"
+      },
+      "provenance_status": "research_published_and_officially_hosted",
+      "licence_status": "CC BY-NC 3.0",
+      "notes": "The supplied archive contains 92 TXT instance files. Preserve the non-commercial restriction and cite both the dataset DOI and the 2014 paper.",
+      "related_citation_ids": [
+        "P01"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-003",
+      "name": "Montoya et al. nonlinear charging benchmark",
+      "problem_families": [
+        "E-VRP-NL"
+      ],
+      "official_source_url": "https://www.vrp-rep.org/datasets/item/2016-0020.html",
+      "dataset_doi": null,
+      "version": "VRP-REP ID 2016-0020",
+      "published_instance_count": 120,
+      "key_parameters": [
+        "customer service times",
+        "charging stations",
+        "battery capacity",
+        "travel times",
+        "arc energy consumption",
+        "piecewise-linear concave charging curves",
+        "partial recharge decisions"
+      ],
+      "recommended_use_cases": "nonlinear charging; partial recharge; comparison of charging models; charging-decision heuristics",
+      "compatibility": {
+        "E-VRP-NL": "direct_fit",
+        "linear_charging_EVRP": "conditional_fit (model simplification)",
+        "E-VRPTW": "unsupported unless windows supplied"
+      },
+      "provenance_status": "research_published_and_repository_catalogued",
+      "licence_status": "VRP-REP public listing; instance-level redistribution terms require source check",
+      "notes": "Official VRP-REP catalogue lists 120 instances. DIMACS identifies this as the E-VRP-NL base set. Retrieve exact files from VRP-REP/DIMACS source and validate.",
+      "related_citation_ids": [
+        "P03"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-004",
+      "name": "Froger capacitated charging-station variants",
+      "problem_families": [
+        "E-VRP-NL-C",
+        "capacitated charging stations"
+      ],
+      "official_source_url": "https://dimacs.rutgers.edu/programs/implementation-challenges/vehicle-routing/implementation-challenge-vehicle-routing/electric-vehicle-routing-problem",
+      "dataset_doi": null,
+      "version": "DIMACS challenge benchmark specification",
+      "published_instance_count": 240,
+      "key_parameters": [
+        "Montoya base instance",
+        "charger capacity at each station (1 or 2 chargers)",
+        "nonlinear charging curve",
+        "charging occupancy and queue interaction"
+      ],
+      "recommended_use_cases": "station congestion; charger-capacity constraints; nonlinear charging; solution checker evaluation",
+      "compatibility": {
+        "E-VRP-NL-C": "direct_fit",
+        "E-VRP-NL": "conditional_fit (remove charger capacity constraints)"
+      },
+      "provenance_status": "research_published_and_competition_specified",
+      "licence_status": "follow VRP-REP/DIMACS distribution terms",
+      "notes": "These 240 are two derived capacity variants per each of the 120 Montoya instances; they are not 240 unrelated base instances. DIMACS reports 120 base + 240 derived = 360 total across both categories.",
+      "related_citation_ids": [
+        "P03",
+        "P04"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-005",
+      "name": "Goeke-Schneider mixed-fleet EVRPTW-MF",
+      "problem_families": [
+        "EVRPTW-MF",
+        "mixed electric/ICE fleet"
+      ],
+      "official_source_url": "https://data.mendeley.com/datasets/bd7rm5fw6k/1",
+      "dataset_doi": "10.17632/bd7rm5fw6k.1",
+      "version": "Version 1 (2022)",
+      "published_instance_count": null,
+      "key_parameters": [
+        "EV and conventional vehicle fleet types",
+        "time windows",
+        "speed",
+        "road gradient",
+        "cargo-load distribution",
+        "energy consumption"
+      ],
+      "recommended_use_cases": "mixed powertrain fleet; fleet allocation; real-world energy model; mixed-fleet routing",
+      "compatibility": {
+        "EVRPTW-MF": "direct_fit",
+        "homogeneous_EV": "conditional_fit (restrict fleet to EVs)",
+        "ICE-EVRP": "direct_fit"
+      },
+      "provenance_status": "research_published_and_officially_hosted",
+      "licence_status": "CC BY 4.0",
+      "notes": "Mendeley record does not state a total instance count in the surfaced metadata; do not invent one.",
+      "related_citation_ids": [
+        "P05",
+        "P12"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-006",
+      "name": "Felipe et al. GVRP multiple technologies and partial recharges",
+      "problem_families": [
+        "GVRP-MTPR",
+        "multiple charging technologies",
+        "partial recharge"
+      ],
+      "official_source_url": "https://www.vrp-rep.org/datasets/item/2018-0004.html",
+      "dataset_doi": null,
+      "version": "VRP-REP ID 2018-0004",
+      "published_instance_count": 41,
+      "key_parameters": [
+        "multiple recharge technologies",
+        "station/technology compatibility",
+        "partial recharge amounts",
+        "vehicle autonomy",
+        "geographical instance attributes"
+      ],
+      "recommended_use_cases": "partial recharge; charger technology choice; mixed charging infrastructure",
+      "compatibility": {
+        "GVRP-MTPR": "direct_fit",
+        "single_technology_EVRP": "conditional_fit (restrict technology choices)"
+      },
+      "provenance_status": "research_published_and_repository_catalogued",
+      "licence_status": "VRP-REP public listing; source terms to be checked",
+      "notes": "VRP-REP currently catalogues 41 instances; some review literature describes a 60-instance FORT collection. Treat the discrepancy as unresolved until the precise release/archive is reconciled; do not combine counts.",
+      "related_citation_ids": [
+        "P06"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-007",
+      "name": "Akbay et al. expanded two-echelon EVRP dataset",
+      "problem_families": [
+        "2E-EVRP",
+        "2E-EVRPTW",
+        "SPD",
+        "partial delivery"
+      ],
+      "official_source_url": "https://zenodo.org/records/14844216",
+      "dataset_doi": "10.5281/zenodo.14844216",
+      "version": "Version 2 (2025)",
+      "published_instance_count": 3000,
+      "key_parameters": [
+        "central depot",
+        "satellite depots",
+        "two vehicle echelons",
+        "customer coordinates and demand",
+        "time windows",
+        "EV battery and load capacities",
+        "SPD and partial delivery flags"
+      ],
+      "recommended_use_cases": "two-echelon logistics; satellites; time windows; simultaneous pickup/delivery; partial deliveries; scale tests",
+      "compatibility": {
+        "2E-EVRP": "direct_fit",
+        "2E-EVRPTW": "direct_fit",
+        "single_echelon_EVRP": "unsupported without documented projection"
+      },
+      "provenance_status": "research_published_and_officially_hosted",
+      "licence_status": "Zenodo record describes software/data release; verify archive-level licence before republishing",
+      "notes": "Zenodo v2 states 3,000 instances. It is a distinct two-echelon family, not a single-echelon EVRP corpus.",
+      "related_citation_ids": [
+        "P07",
+        "P08"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-008",
+      "name": "V2G and dynamic energy pricing extended EVRPTW",
+      "problem_families": [
+        "EVRPTW-V2G",
+        "time-of-use energy pricing"
+      ],
+      "official_source_url": "https://data.mendeley.com/datasets/dmnhggw478/1",
+      "dataset_doi": "10.17632/dmnhggw478.1",
+      "version": "Version 1 (2026)",
+      "published_instance_count": null,
+      "key_parameters": [
+        "base EVRPTW data",
+        "vehicle-to-grid capability",
+        "time-of-use energy tariffs",
+        "time-dependent charge/discharge decisions"
+      ],
+      "recommended_use_cases": "energy-cost optimization; V2G revenue; time-dependent charging; grid interaction",
+      "compatibility": {
+        "EVRPTW-V2G-DP": "candidate_direct (schema validation pending)",
+        "static_EVPR": "conditional_fit"
+      },
+      "provenance_status": "dataset_published_schema_not_yet_inspected",
+      "licence_status": "CC BY 4.0",
+      "notes": "Mendeley data record is available; inspect files and any linked paper before promoting compatibility to direct_fit.",
+      "related_citation_ids": [
+        "P10"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-009",
+      "name": "Gradient-aware EVRPTW with altitude information",
+      "problem_families": [
+        "EVRPTW-GR",
+        "gradient/load-dependent energy",
+        "regenerative braking"
+      ],
+      "official_source_url": "https://data.mendeley.com/datasets/srfdbp2twv/1",
+      "dataset_doi": "10.17632/srfdbp2twv.1",
+      "version": "Version 1 (2025)",
+      "published_instance_count": null,
+      "key_parameters": [
+        "Schneider base instance fields",
+        "altitude/elevation",
+        "road gradient",
+        "regenerative braking",
+        "load dynamics"
+      ],
+      "recommended_use_cases": "grade-aware energy use; downhill regeneration; realistic energy modelling",
+      "compatibility": {
+        "EVRPTW-GR": "candidate_direct (schema validation pending)",
+        "base_EVPRTW": "conditional_fit"
+      },
+      "provenance_status": "dataset_published_schema_not_yet_inspected",
+      "licence_status": "CC BY 4.0",
+      "notes": "Dataset record explicitly describes modified Schneider instances; preserve parent-child derivation and inspect Description.docx for exact parameter units.",
+      "related_citation_ids": [
+        "P01",
+        "P09"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-010",
+      "name": "Charging-station energy differences",
+      "problem_families": [
+        "EVRP heterogeneous station energy"
+      ],
+      "official_source_url": "https://data.mendeley.com/datasets/4ktbt29z5x/1",
+      "dataset_doi": "10.17632/4ktbt29z5x.1",
+      "version": "Version 1 (2023)",
+      "published_instance_count": null,
+      "key_parameters": [
+        "station-specific energy differences/attributes (exact fields in README)"
+      ],
+      "recommended_use_cases": "heterogeneous charging station energy characteristics; station-choice sensitivity",
+      "compatibility": {
+        "EVRP-station-energy": "candidate_direct (schema validation pending)"
+      },
+      "provenance_status": "dataset_published_schema_not_yet_inspected",
+      "licence_status": "CC BY 4.0",
+      "notes": "Mendeley record describes three distinct data sets/configurations, not necessarily three individual problem instances. Inspect readme.txt before formal parameter mapping.",
+      "related_citation_ids": [
+        "P11"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-011",
+      "name": "EVRP with backhauls and time windows under uncertainty (EVRPBTW-USUT)",
+      "problem_families": [
+        "EVRPBTW-USUT",
+        "backhauls",
+        "time windows",
+        "uncertain travel/service times"
+      ],
+      "official_source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.6hdr7srbv",
+      "dataset_doi": "10.5061/dryad.6hdr7srbv",
+      "version": "Dryad version 2025",
+      "published_instance_count": 60,
+      "key_parameters": [
+        "backhaul demand",
+        "time windows",
+        "travel-time uncertainty",
+        "service-time uncertainty",
+        "deterministic and robust solutions",
+        "real case network/time/distance matrices"
+      ],
+      "recommended_use_cases": "robust/stochastic routing; backhaul operations; deterministic-vs-robust methods; real-case validation",
+      "compatibility": {
+        "EVRPBTW-USUT": "candidate_direct (archive parser pending)",
+        "standard_EVPRTW": "conditional_fit"
+      },
+      "provenance_status": "research_dataset_hosted_schema_not_yet_inspected",
+      "licence_status": "Dryad dataset terms to be checked",
+      "notes": "The GitHub README describes 60 synthetic instances (25/50/100 customers) plus a 47-customer real case. Counts should be rechecked against archive manifest before validation.",
+      "related_citation_ids": [
+        "P14"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-012",
+      "name": "Mixed-fleet VRP with low-emission zones (EVRPTW-derived + Milan case)",
+      "problem_families": [
+        "mixed-fleet EVRP",
+        "low-emission-zone routing",
+        "real-road case study"
+      ],
+      "official_source_url": "https://data.mendeley.com/datasets/np452gmj7f/2",
+      "dataset_doi": "10.17632/np452gmj7f.2",
+      "version": "Version 2 (2025)",
+      "published_instance_count": null,
+      "key_parameters": [
+        "Schneider-derived EVRPTW base data",
+        "LEZ centre and radius",
+        "vehicle fleet types",
+        "Milan Area C real-road distances"
+      ],
+      "recommended_use_cases": "urban fleet transition; low-emission zones; mixed fleet; real road-distance case studies",
+      "compatibility": {
+        "mixed_fleet_LEZ": "candidate_direct (schema validation pending)",
+        "base_EVPRTW": "conditional_fit"
+      },
+      "provenance_status": "research_published_and_officially_hosted",
+      "licence_status": "CC BY 4.0",
+      "notes": "This is a derived dataset: cite both the dataset DOI and its paper, and explicitly acknowledge Schneider et al. as the parent benchmark.",
+      "related_citation_ids": [
+        "P01",
+        "P13"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-013",
+      "name": "Electric autonomous dial-a-ride benchmark (adjacent family)",
+      "problem_families": [
+        "eADARP",
+        "electric dial-a-ride",
+        "ride-pooling"
+      ],
+      "official_source_url": "https://github.com/claudiabongiovanni/eADARP",
+      "dataset_doi": null,
+      "version": "GitHub repository snapshot; pin commit",
+      "published_instance_count": null,
+      "key_parameters": [
+        "requests/origins/destinations",
+        "time windows and ride-time constraints",
+        "depots",
+        "charging stations",
+        "vehicle capacities",
+        "initial battery inventory",
+        "recharge rates",
+        "Uber-derived travel times"
+      ],
+      "recommended_use_cases": "on-demand mobility; passenger routing; ride-pooling; battery-constrained DARP",
+      "compatibility": {
+        "eADARP": "direct_fit",
+        "freight_EVPRTW": "not_applicable"
+      },
+      "provenance_status": "research_published_and_author_hosted",
+      "licence_status": "repository licence/file terms should be checked",
+      "notes": "Adjacent electric mobility benchmark, not a freight EVRP dataset. Include in a separate problem-family collection.",
+      "related_citation_ids": [
+        "P15",
+        "P16"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-014",
+      "name": "Electric vehicle-drone routing instances (adjacent family)",
+      "problem_families": [
+        "EV-drone routing",
+        "synchronised truck-drone routing"
+      ],
+      "official_source_url": "https://github.com/setyotw/EVDRP_instances",
+      "dataset_doi": null,
+      "version": "GitHub repository snapshot; README updated 2026-07-09",
+      "published_instance_count": 128,
+      "key_parameters": [
+        "Schneider-derived EVRP nodes",
+        "drone service/synchronization attributes",
+        "vehicle and drone operational parameters"
+      ],
+      "recommended_use_cases": "EV-drone coordination; synchronization; integrated routing",
+      "compatibility": {
+        "EVDRP": "direct_fit",
+        "freight_EVPRTW": "not_applicable"
+      },
+      "provenance_status": "research_published_and_author_hosted",
+      "licence_status": "repository states CC0-1.0",
+      "notes": "128 instances adapted from Schneider et al. Cite Mara et al. (2023) for EVDRP and Schneider et al. (2014) as the parent benchmark source. Separate adjacent problem family, not standard EVRP.",
+      "related_citation_ids": [
+        "P17",
+        "P01"
+      ]
+    },
+    {
+      "dataset_id": "EVRP-015",
+      "name": "EM-DARP electric shuttle demand-responsive routing dataset (adjacent family)",
+      "problem_families": [
+        "electric mobility DARP",
+        "electric shuttle routing",
+        "demand-responsive transport"
+      ],
+      "official_source_url": "https://zenodo.org/records/23468137",
+      "dataset_doi": "10.5281/zenodo.23468137",
+      "version": "Version 1 (2026-10-19)",
+      "published_instance_count": null,
+      "key_parameters": [
+        "benchmark_instances.csv",
+        "benchmark_instances.json",
+        "benchmark_instances.tex",
+        "electric shuttle routing parameters (inspect release metadata)"
+      ],
+      "recommended_use_cases": [
+        "electric shuttle and demand-responsive routing",
+        "mobility-oriented DARP research",
+        "adjacent electric fleet benchmarks"
+      ],
+      "compatibility": {
+        "EM-DARP": "candidate_direct (dataset files and associated paper need inspection)",
+        "freight_EVPRTW": "not_applicable"
+      },
+      "provenance_status": "recent_zenodo_release_schema_not_yet_inspected",
+      "licence_status": "verify exact Zenodo record licence before redistribution",
+      "notes": "New adjacent dataset published 19 October 2026. It is a DARP/mobility dataset, not a conventional freight EVRP benchmark; retain as a separate family.",
+      "related_citation_ids": []
+    }
+  ],
+  "local_snapshots": [
+    {
+      "snapshot_id": "LOCAL-001",
+      "dataset_id": "EVRP-001",
+      "path": "data/raw/mavrovouniotis-upload/",
+      "archive": "evrp-benchmark-set.zip",
+      "files_observed": 17,
+      "status": "locally_ingested_parser_passed",
+      "relationship": "historical/uploaded snapshot; not the current 24-file upstream listing",
+      "sha256_manifest": "data/manifest.json"
+    },
+    {
+      "snapshot_id": "LOCAL-002",
+      "dataset_id": "EVRP-002",
+      "path": "data/raw/mendeley-evrptw/evrptw_instances/",
+      "archive": "h3mrm5dhxw-1.zip",
+      "files_observed": 92,
+      "status": "locally_ingested_parser_passed",
+      "relationship": "uploaded Mendeley v1 archive snapshot",
+      "sha256_manifest": "data/manifest.json"
+    }
+  ],
+  "citation_sources": {
+    "P01": {
+      "authors": "Michael Schneider, Andreas Stenger, Dominik Goeke",
+      "year": 2014,
+      "title": "The Electric Vehicle-Routing Problem with Time Windows and Recharging Stations",
+      "venue": "Transportation Science, 48(4), 500–520",
+      "doi": "10.1287/trsc.2013.0490",
+      "url": "https://doi.org/10.1287/trsc.2013.0490",
+      "reference_type": "research_publication"
+    },
+    "P02": {
+      "authors": "Michalis Mavrovouniotis, Charalambos Menelaou, Stelios Timotheou, Georgios Ellinas, Christos Panayiotou, Marios Polycarpou",
+      "year": 2020,
+      "title": "A Benchmark Test Suite for the Electric Capacitated Vehicle Routing Problem",
+      "venue": "2020 IEEE Congress on Evolutionary Computation, 1–8",
+      "doi": "10.1109/CEC48606.2020.9185753",
+      "url": "https://doi.org/10.1109/CEC48606.2020.9185753",
+      "reference_type": "research_publication"
+    },
+    "P03": {
+      "authors": "Alejandro Montoya, Christelle Guéret, Jorge E. Mendoza, Juan G. Villegas",
+      "year": 2017,
+      "title": "The electric vehicle routing problem with nonlinear charging function",
+      "venue": "Transportation Research Part B: Methodological, 103, 87–110",
+      "doi": "10.1016/j.trb.2017.02.004",
+      "url": "https://doi.org/10.1016/j.trb.2017.02.004",
+      "reference_type": "research_publication"
+    },
+    "P04": {
+      "authors": "Aurélien Froger, Ola Jabali, Jorge E. Mendoza, Gilbert Laporte",
+      "year": 2022,
+      "title": "The Electric Vehicle Routing Problem with Capacitated Charging Stations",
+      "venue": "Transportation Science, 56(2), 460–482",
+      "doi": "10.1287/trsc.2021.1111",
+      "url": "https://doi.org/10.1287/trsc.2021.1111",
+      "reference_type": "research_publication"
+    },
+    "P05": {
+      "authors": "Dominik Goeke, Michael Schneider",
+      "year": 2015,
+      "title": "Routing a mixed fleet of electric and conventional vehicles",
+      "venue": "European Journal of Operational Research, 245(1), 81–99",
+      "doi": "10.1016/j.ejor.2015.01.049",
+      "url": "https://doi.org/10.1016/j.ejor.2015.01.049",
+      "reference_type": "research_publication"
+    },
+    "P06": {
+      "authors": "Ángel Felipe, M. Teresa Ortuño, Giovanni Righini, Gregorio Tirado",
+      "year": 2014,
+      "title": "A heuristic approach for the green vehicle routing problem with multiple technologies and partial recharges",
+      "venue": "Transportation Research Part E: Logistics and Transportation Review, 71, 111–128",
+      "doi": "10.1016/j.tre.2014.09.003",
+      "url": "https://doi.org/10.1016/j.tre.2014.09.003",
+      "reference_type": "research_publication"
+    },
+    "P07": {
+      "authors": "Mehmet Anıl Akbay, Çağrı B. Kalaycı, Christian Blum, Oya Polat",
+      "year": 2022,
+      "title": "Variable neighborhood search for the two-echelon electric vehicle routing problem with time windows",
+      "venue": "Applied Sciences, 12(3), 1014",
+      "doi": "10.3390/app12031014",
+      "url": "https://doi.org/10.3390/app12031014",
+      "reference_type": "research_publication"
+    },
+    "P08": {
+      "authors": "Mehmet Anıl Akbay, Christian Blum",
+      "year": 2025,
+      "title": "A dataset for two-echelon electric vehicle routing problems",
+      "venue": "Data in Brief, 60, 111470",
+      "doi": "10.1016/j.dib.2025.111470",
+      "url": "https://doi.org/10.1016/j.dib.2025.111470",
+      "reference_type": "data_article"
+    },
+    "P09": {
+      "authors": "Sina Rastani, Merve Keskin, Tugce Yuksel, Bülent Çatay",
+      "year": 2025,
+      "title": "Uphill Struggles, Downhill Gains: How Road Gradients and Load Dynamics Influence Electric Vehicle Routing Decisions?",
+      "venue": "European Journal of Operational Research (dataset record describes article as to appear)",
+      "doi": null,
+      "url": "https://data.mendeley.com/datasets/srfdbp2twv/1",
+      "reference_type": "research_publication"
+    },
+    "P10": {
+      "authors": "Luis Fernando Rodriguez Jimenez",
+      "year": 2026,
+      "title": "Extended Benchmark Instances for the Electric Vehicle Routing Problem with V2G and Dynamic Energy Pricing",
+      "venue": "Mendeley Data, Version 1",
+      "doi": "10.17632/dmnhggw478.1",
+      "url": "https://doi.org/10.17632/dmnhggw478.1",
+      "reference_type": "dataset_record"
+    },
+    "P11": {
+      "authors": "Lijun Fan",
+      "year": 2023,
+      "title": "Data for: Electric vehicle routing problem considering energy differences of charging stations",
+      "venue": "Mendeley Data, Version 1",
+      "doi": "10.17632/4ktbt29z5x.1",
+      "url": "https://doi.org/10.17632/4ktbt29z5x.1",
+      "reference_type": "dataset_record"
+    },
+    "P12": {
+      "authors": "Dominik Goeke, Michael Schneider",
+      "year": 2022,
+      "title": "EVRPTW-MF",
+      "venue": "Mendeley Data, Version 1",
+      "doi": "10.17632/bd7rm5fw6k.1",
+      "url": "https://doi.org/10.17632/bd7rm5fw6k.1",
+      "reference_type": "dataset_record"
+    },
+    "P13": {
+      "authors": "Maurizio Bruglieri, Bülent Çatay, Merve Keskin, Simona Mancini, Ornella Pisacane",
+      "year": 2025,
+      "title": "The Mixed-Fleet Vehicle Routing Problem with Low Emission Zones",
+      "venue": "Transportation Research Part E: Logistics and Transportation Review (dataset record: to appear)",
+      "doi": null,
+      "url": "https://data.mendeley.com/datasets/np452gmj7f/2",
+      "reference_type": "research_publication"
+    },
+    "P14": {
+      "authors": "Dongbo Peng, Kanok Boriboonsomsin, Matthew Barth",
+      "year": 2025,
+      "title": "Routing short-haul trucks under the uncertainties of travel time and service time",
+      "venue": "Dryad dataset and associated EVRPBTW-USUT study",
+      "doi": "10.5061/dryad.6hdr7srbv",
+      "url": "https://doi.org/10.5061/dryad.6hdr7srbv",
+      "reference_type": "dataset_record"
+    },
+    "P15": {
+      "authors": "Claudia Bongiovanni, Moshe Kaspi, Nikolas Geroliminis",
+      "year": 2019,
+      "title": "The electric autonomous dial-a-ride problem",
+      "venue": "Transportation Research Part B: Methodological, 122, 436–456",
+      "doi": null,
+      "url": "https://github.com/claudiabongiovanni/eADARP",
+      "reference_type": "research_publication"
+    },
+    "P16": {
+      "authors": "Tai-Yu Ma, Yumeng Fang",
+      "year": 2022,
+      "title": "Survey of charging management and infrastructure planning for electrified demand-responsive transport systems: Methodologies and recent developments",
+      "venue": "European Transport Research Review, 14, article 36",
+      "doi": "10.1186/s12544-022-00560-3",
+      "url": "https://doi.org/10.1186/s12544-022-00560-3",
+      "reference_type": "research_publication"
+    },
+    "P17": {
+      "authors": "Setyo Tri Windras Mara, Ruhul Sarker, Daryl Essam, Saber Elsayed",
+      "year": 2023,
+      "title": "Solving electric vehicle–drone routing problem using memetic algorithm",
+      "venue": "Swarm and Evolutionary Computation, 79, 101295",
+      "doi": "10.1016/j.swevo.2023.101295",
+      "url": "https://doi.org/10.1016/j.swevo.2023.101295",
+      "reference_type": "research_publication"
+    }
+  }
+}
